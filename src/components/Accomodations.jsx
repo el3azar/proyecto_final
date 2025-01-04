@@ -53,8 +53,13 @@ const handleCloseModal = () => {
 
 //funciones para edicion
 const handleEditAlojamiento = (item) => {
-    setSelectedItem(item);
-    setEditAlojamiento(true);
+   
+    if (item) {
+        // Navegación al componente asignado en la ruta
+        navigate(`/updateAlojamiento`, { state: { item } });
+    }
+    
+    
     
 };
 const handleCloseEditAlojamiento = () => setEditAlojamiento(false);
@@ -67,8 +72,8 @@ const handleCloseEditAlojamiento = () => setEditAlojamiento(false);
                     <>
                     <Navegacion/>
                         <section className='d-flex justify-content-between'>
-                        <h1>Lista de Alojamientos</h1>
-                        <button onClick={() => handleShowModal()}><IoIosAddCircle />Nuevo Alojamiento</button>
+                            <h1>Lista de Alojamientos</h1>
+                            <button onClick={() => handleShowModal()}><IoIosAddCircle />Nuevo Alojamiento</button>
                         </section>
                        
                         <div className="table-responsive">
@@ -105,9 +110,7 @@ const handleCloseEditAlojamiento = () => setEditAlojamiento(false);
                         </div>
                         <NewAccomodation showModal={showModal} handleCloseModal={handleCloseModal}  />
 
-                        {selectedItem && (
-                        <UpdateAccomodation showEdit={EditAlojamiento} handleCloseEditAlojamiento={handleCloseEditAlojamiento} item={selectedItem} />
-                    )}
+                       
                     </>
                 ) : <h2>No estas autorizado, inicia sesion</h2>
             }
