@@ -32,6 +32,18 @@ const newBookings = async (data) => {
         console.error("Error al obtener los alojamientos", error);
     }
 }
+const cancelBooking = async (id, data) => {
+    try {
+        const response = await axios.patch(`https://apibookingsaccomodations-production.up.railway.app/api/V1/status_booking/${id}`, data, {
+            headers: {
+                //agregamos el token para la autorizacion
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error al actualizar la reserva", error);
+    }
+}
 
-
-export { getBookings,newBookings }
+export { getBookings,newBookings,cancelBooking }

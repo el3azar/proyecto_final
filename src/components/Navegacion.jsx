@@ -24,6 +24,9 @@ export default function () {
                         <li className="nav-item">
                         <Link to="/reservaciones" className="nav-link active" aria-current="page" >Reservaciones</Link>
                         </li>
+                        <li className="nav-item">
+                        <Link to="#" className="nav-link active" aria-current="page" >Calendario</Link>
+                        </li>
                       </ul>
                       <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" />
