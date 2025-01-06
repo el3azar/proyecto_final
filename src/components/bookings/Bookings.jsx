@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { IoIosAddCircle } from "react-icons/io";
-import Navegacion from './Navegacion';
-import { getBookings } from '../services/bookingServices'
+import Navegacion from '../Navegacion';
+import { getBookings } from '../../services/bookingServices'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import NewBooking from './NewBooking';
-import { getToken } from './Login';
+import { getToken } from '../Login';
 import CancelarBooking from './CancelarBooking';
+import { useNavigate } from 'react-router-dom';
+import styles from '../../styles/bookings/Bookings.module.css';
 
 export default function Bookings() {
     //estado para guardar las reservaciones
@@ -20,21 +22,24 @@ export default function Bookings() {
   // Estado adicional para la reserva seleccionada
  const [selectedBooking, setSelectedBooking] = useState(null);
 
+ const navigate = useNavigate()
+
   //metodo para obtener las reservaciones
-  const fetchData = async () => {
-      const response = await getBookings() //si esto es un exito devolvera un arreglo de reservaciones
+  const fetchData = async (session_token) => {
+      const response = await getBookings(session_token) //si esto es un exito devolvera un arreglo de reservaciones
       setBookings(response);
   }
   //montamos las reservaciones al cargar la pagina
   useEffect(() => {
       //validamos si el token existe
-      const session_token = getToken();
+      const session_token = sessionStorage.getItem('token_bookings');
       if(session_token){
           setIsAuthenticated(true)
           //va poder visualizar los alojamientos
-          fetchData()
+          fetchData(session_token)
       }else{
           setIsAuthenticated(false)
+          navigate('/'); // Redirigir a la ruta raíz si no hay token
       }
 
   }, [])

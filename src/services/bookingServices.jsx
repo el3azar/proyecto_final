@@ -3,7 +3,7 @@ import axios from "axios";
 //obtenemos el token que se guarda en el sessionstorage
 const token = sessionStorage.getItem('token_bookings')
 
-const getBookings = async () => {
+const getBookings = async (token) => {
     try{
 
         const response = await axios.get("https://apibookingsaccomodations-production.up.railway.app/api/V1/bookings", {
@@ -46,4 +46,19 @@ const cancelBooking = async (id, data) => {
     }
 }
 
-export { getBookings,newBookings,cancelBooking }
+const getBookingsByAccomodation = async (id,token) => {
+    try{
+
+        const response = await axios.get(`https://apibookingsaccomodations-production.up.railway.app/api/V1/bookings/calendar/${id}`, {
+            headers: {
+                //agregamos el token para la autorizacion
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return response.data;
+    }catch(error){
+        console.error("Error al obtener los alojamientos", error);
+    }
+}
+
+export { getBookings,newBookings,cancelBooking,getBookingsByAccomodation }

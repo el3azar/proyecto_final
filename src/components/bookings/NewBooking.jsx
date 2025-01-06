@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { getAccomodations } from '../services/accomodationServices'
-import { getIdUser,getToken } from './Login';
-import { newBookings } from '../services/bookingServices'
+import { getAccomodations } from '../../services/accomodationServices';
+
+import { getIdUser,getToken } from '../Login';
+import { newBookings } from '../../services/bookingServices'
+import styles from '../../styles/bookings/NewBooking.module.css';
+
 
 export default function NewBooking({ showModal, handleCloseModal}) {
   
@@ -11,15 +14,15 @@ export default function NewBooking({ showModal, handleCloseModal}) {
     const [accomodations, setAccomodations] = useState([])
 
     //metodo para obtener los alojamientos para el combobox
-    const fetchData = async () => {
-        const response = await getAccomodations() //si esto es un exito devolvera un arreglo de alojamientos
+    const fetchData = async (session_token) => {
+        const response = await getAccomodations(session_token) //si esto es un exito devolvera un arreglo de alojamientos
         setAccomodations(response);
     }
     useEffect(() => {
             //validamos si el token existe
-            const session_token = getToken() ;
+            const session_token = sessionStorage.getItem('token_bookings');
             if(session_token){
-                fetchData()
+                fetchData(session_token)
             }
         }, [])
 

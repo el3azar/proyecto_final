@@ -2,8 +2,8 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { useForm } from 'react-hook-form'
-import { getToken } from './Login';
-import { newAccomodation } from '../services/accomodationServices';
+import { newAccomodation } from '../../services/accomodationServices';
+import styles from '../../styles/accomodation/NewAccomodation.module.css';
 
 export default function NewAccomodation({ showModal, handleCloseModal }) {
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
@@ -13,7 +13,7 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
         console.log(data);
     
         //validamos si el token existe
-        const session_token = getToken();
+        const session_token = sessionStorage.getItem('token_bookings');
         
         if(session_token){//si existe el token, guardamos el alojamiento
         const response = await newAccomodation(data);

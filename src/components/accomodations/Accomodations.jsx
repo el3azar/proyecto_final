@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { getAccomodations } from '../services/accomodationServices'
+import { getAccomodations } from '../../services/accomodationServices'
 import { IoIosAddCircle } from "react-icons/io";
 import { MdModeEdit } from "react-icons/md";
-import { Link } from 'react-router-dom'
-import Navegacion from './Navegacion';
+import Navegacion from '../Navegacion';
 import NewAccomodation from './NewAccomodation';
-import { Button } from 'bootstrap/dist/js/bootstrap.bundle.min';
-import UpdateAccomodation from './UpdateAccomodation';
+import styles from '../../styles/accomodation/Accomodation.module.css';
+
 import { useNavigate } from 'react-router-dom';
 
 export default function Accomodations() {
@@ -15,17 +14,11 @@ export default function Accomodations() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     //estado para mostrar el modal
       const [showModal, setShowModal] = useState(false);
-    //estado para controlar el editar alojamiento
-    const [EditAlojamiento, setEditAlojamiento] = useState(false); 
-    
-    //estado para controlar el alojamiento seleccionado
-    const [selectedItem, setSelectedItem] = useState(null); 
-
     const navigate = useNavigate()
 
     //metodo para obtener la respuesta de la api
-    const fetchData = async () => {
-        const response = await getAccomodations() //si esto es un exito devolvera un arreglo de alojamientos
+    const fetchData = async (session_token) => {
+        const response = await getAccomodations(session_token) //si esto es un exito devolvera un arreglo de alojamientos
         setAccomodations(response);
     }
 
@@ -35,9 +28,11 @@ export default function Accomodations() {
         if(session_token){
             setIsAuthenticated(true)
             //va poder visualizar los alojamientos
-            fetchData()
+            fetchData(session_token)
+           
         }else{
             setIsAuthenticated(false)
+            navigate('/'); // Redirigir a la ruta raíz si no hay token
         }
 
     }, [])
@@ -62,7 +57,7 @@ const handleEditAlojamiento = (item) => {
     
     
 };
-const handleCloseEditAlojamiento = () => setEditAlojamiento(false);
+
 
     return (
         <div>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { getToken } from './Login';
-import { cancelBooking } from '../services/bookingServices'
+import { getToken } from '../Login';
+import { cancelBooking } from '../../services/bookingServices'
+import styles from '../../styles/bookings/CancelarBooking.module.css';
 
 export default function CancelarBooking({showModalCancel, handleCloseModalCancel,selectedBooking}) {
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm({defaultValues: selectedBooking});
@@ -22,7 +23,7 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
           };
           console.log("estado: ",estado);
           //validamos si el token existe
-          const session_token = getToken();
+          const session_token = sessionStorage.getItem('token_bookings');
           if(session_token){//si existe el token, guardamos la reservacion
             const response = await cancelBooking(data.id,estado);
             console.log(response);

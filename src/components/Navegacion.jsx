@@ -4,6 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Login from './Login'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
+import styles from '../styles/Navegacion.module.css';
 
 export default function () {
   return (
@@ -25,7 +26,7 @@ export default function () {
                         <Link to="/reservaciones" className="nav-link active" aria-current="page" >Reservaciones</Link>
                         </li>
                         <li className="nav-item">
-                        <Link to="#" className="nav-link active" aria-current="page" >Calendario</Link>
+                        <Link to="/calendario" className="nav-link active" aria-current="page" >Calendario</Link>
                         </li>
                       </ul>
                       <form className="d-flex" role="search">
@@ -34,7 +35,7 @@ export default function () {
                       </form>
                     </div>
                   </section>
-                </nav>
-    </div>
+        </nav>
+  </div>
   )
 }

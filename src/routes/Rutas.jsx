@@ -1,10 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from '../components/Login'
-import Accomodations from '../components/Accomodations'
+import Accomodations from '../components/accomodations/Accomodations'
 import Home from '../components/Home'
-import Bookings from '../components/Bookings'
-import UpdateAccomodation from '../components/UpdateAccomodation'
+import Bookings from '../components/bookings/Bookings'
+import UpdateAccomodation from '../components/accomodations/UpdateAccomodation'
+import Calendar from '../components/bookings/Calendar'
 
 export default function Rutas() {
     return (
@@ -16,6 +17,7 @@ export default function Rutas() {
                 <Route path='/alojamientos' element={<Accomodations />}/>
                 <Route path='/reservaciones' element={<Bookings/>}/>
                 <Route path='/updateAlojamiento' element={<UpdateAccomodation/>}/>
+                <Route path='/calendario' element={<Calendar/>}/>
             </Routes>
         </BrowserRouter>
     )

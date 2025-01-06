@@ -1,9 +1,9 @@
 import React,{useEffect,useState} from 'react'
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { updateAccomodation } from '../services/accomodationServices';
-import { getToken } from './Login';
+import { updateAccomodation } from '../../services/accomodationServices';
 import { useNavigate } from 'react-router-dom';
+import styles from '../../styles/accomodation/UpdateAccomodation.module.css';
 
 export default function UpdateAccomodation() {
   const location = useLocation();
@@ -15,13 +15,15 @@ export default function UpdateAccomodation() {
    // Inicializamos el hook useForm
   const {register,handleSubmit,formState: { errors },reset} = useForm({defaultValues: item});
 
-
   useEffect(() => {
      //validamos si el token existe
-     const session_token = getToken();
+     const session_token = sessionStorage.getItem('token_bookings');
       if(session_token){
           setIsAuthenticated(true)
              
+        }else{
+          setIsAuthenticated(false)
+          navigate('/'); // Redirigir a la ruta raíz si no hay token
         }
   
   }, [])
@@ -34,13 +36,13 @@ export default function UpdateAccomodation() {
       console.log(accomodation);
           
       if(isAuthenticated){//si existe el token, guardamos el alojamiento
-      
+      //recibimos la data de la api
       const response = await updateAccomodation(data.id, accomodation);
       console.log(response);
       
       //redireccionar a la pagina de alojamientos
       navigate('/alojamientos');
-      //aqui poner alertas con sweetalert
+      
       
       }
   
