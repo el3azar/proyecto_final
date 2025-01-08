@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #090a46; /* Cambia el color de fondo */
+    margin-top: 0;
+  }
+
+  .navbar .nav-link {
+    color: #ffffff !important; /* Fuerza el color del texto */
+  }
+  
+  .navbar .nav-link:hover {
+    color: #c6d3e4 !important; /* Fuerza el color al pasar el mouse */
+  }
+  
+  .btn-outline-success {
+    color: #ffffff; /* Color del botón */
+    border-color: #ffffff; /* Color del borde */
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #ffffff; /* Fondo al pasar el mouse */
+    color: #090a46; /* Color del texto al pasar el mouse */
+  }
