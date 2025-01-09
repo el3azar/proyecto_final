@@ -56,7 +56,8 @@ export default function Login() {
 
 
     return (
-        <div className='container'> 
+        <div className= {`${styles.formWrapper}`}>
+            <div className={`${styles.formContainer}`} > 
             <h1><FaArrowRightToBracket className='me-2'/>Iniciar Sesion</h1>
             <form action="" onSubmit={handleSubmit(loginForm)}>
                 
@@ -72,10 +73,12 @@ export default function Login() {
                     <input type="password" {...register('password')} className='w-100'/>
                 </div>
                 <div className='d-flex justify-content-start '>
-                    <button type='submit' className='btn btn-danger w-100'><FaArrowRightToBracket className='me-2' />Iniciar sesion</button>
+                    <button type='submit' className={`${styles.customBtn}  w-100`}><FaArrowRightToBracket className='me-2' />Iniciar sesion</button>
                 </div>
             </form>
         </div>
+        </div>
+        
     )
 }
 
