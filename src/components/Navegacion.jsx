@@ -28,7 +28,7 @@ export default function () {
                         </li>
                       </ul>
                       <form className="d-flex" role="search">
-                        <button class={`btn btn-outline-success ${styles['btn-outline-success']}`} type="button">Cerrar Sesión</button>
+                        <button className={`btn btn-outline-success ${styles['btn-outline-success']}`} type="button">Cerrar Sesión</button>
                       </form>
                     </div>
                   </section>

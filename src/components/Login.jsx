@@ -29,57 +29,60 @@ import { FaInfoCircle } from 'react-icons/fa';
         
     }
 
-export default function Login() {
-    //entrada de datos del formulario
-    const { register, handleSubmit } = useForm()
-   
-   
+    export default function Login() {
+        const { 
+            register, 
+            handleSubmit, 
+            formState: { errors } 
+        } = useForm();
+    
+        const navigate = useNavigate();
+    
+        const loginForm = async (data) => {
+            console.log(data); // {email, password}
+            const response = await login(data);
+            if (response?.token) {
+                sessionStorage.setItem('token_bookings', response.token);
+                sessionStorage.setItem('correo_user', response.user);
+                navigate("/home");
+            }
+        };
+    
+        return (
+            <div className={`${styles.formWrapper}`}>
+                <div className={`${styles.formContainer}`}>
+                    <h1><FaArrowRightToBracket className="me-2" /> Iniciar Sesión</h1>
+                    <form onSubmit={handleSubmit(loginForm)}>
+                        <div>
+                            <p><FaInfoCircle className="me-2" /> Ingresa tus credenciales para acceder al sistema </p>
+                        </div>
+                        <div className={`${styles.alineado} mb-3`}>
+                            <label htmlFor="email">Correo</label>
+                            <input  type="email"  {...register('email', { 
+                                    required: "El correo es obligatorio", 
+                                    pattern: {
+                                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                        message: "Ingresa un correo válido"
+                                    } 
+                                })}  className={`w-100 ${errors.email ? styles.inputError : ''}`}  />
+                            {errors.email && <p className={styles.errorMessage}>{errors.email.message}</p>}
+                        </div>
+                        <div className={`${styles.alineado} mb-3`}>
+                            <label htmlFor="password">Contraseña</label>
+                            <input type="password"  {...register('password', { 
+                            required: "La contraseña es obligatoria"})} 
+                            className={`w-100 ${errors.password ? styles.inputError : ''}`} />
+                            {errors.password && <p className={styles.errorMessage}>{errors.password.message}</p>}
 
-    const navigate = useNavigate()
-
-    //metodo para validar el usuario
-    const loginForm = async (data) => {
-        console.log(data); //{email, password}
-        const response = await login(data);
-        //validando la respuesta del login
-        if(response?.token){
-            //si esta autorizada, guardamos el token en el sessionstorage
-            sessionStorage.setItem('token_bookings', response.token)
-            sessionStorage.setItem('correo_user', response.user)
-            
-        }
-        //redireccione al home
-        navigate("/home")
-        console.log(response);
-        
+                        </div>
+                        <div className="d-flex justify-content-start">
+                            <button type="submit" className={`${styles.customBtn} w-100`}> <FaArrowRightToBracket className="me-2" />
+                                Iniciar sesión
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        );
     }
-
-
-    return (
-        <div className= {`${styles.formWrapper}`}>
-            <div className={`${styles.formContainer}`} > 
-            <h1><FaArrowRightToBracket className='me-2'/>Iniciar Sesion</h1>
-            <form action="" onSubmit={handleSubmit(loginForm)}>
-                
-                <div>
-                   <p><FaInfoCircle className='me-2'/>Ingresa tus credenciales para acceder al sistema</p>
-                </div>
-                <div className= {`${styles.alineado} mb-3`} >
-                    <label htmlFor="">Correo</label>
-                    <input type="email" {...register('email')} className='w-100'/>
-                </div>
-                <div  className= {`${styles.alineado} mb-3`}>
-                    <label htmlFor="">Contraseña</label>
-                    <input type="password" {...register('password')} className='w-100'/>
-                </div>
-                <div className='d-flex justify-content-start '>
-                    <button type='submit' className={`${styles.customBtn}  w-100`}><FaArrowRightToBracket className='me-2' />Iniciar sesion</button>
-                </div>
-            </form>
-        </div>
-        </div>
-        
-    )
-}
-
- 
+    
