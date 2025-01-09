@@ -72,9 +72,13 @@ const handleCloseModalCancel = () => {
                       <Navegacion/>
                       <section className='d-flex justify-content-between'>
                       <h1>Lista de Reservaciones</h1>
-                      <button className="btn btn-primary" onClick={() => handleShowModal()}><IoIosAddCircle />Nueva Reservacion</button>
                       </section>
-                      <div className="table-responsive">
+                      <div className={`${styles.aline} `}>
+                            <button className={`${styles.customBtn} `} onClick={() => handleShowModal()}><IoIosAddCircle />Nueva Reservacion</button>
+                      </div>
+
+                      <div className='container'>
+                        <div className="table-responsive">
                             <table className="table table-striped">
                                 <thead>
                                     <tr>
@@ -102,7 +106,7 @@ const handleCloseModalCancel = () => {
                                                     <td>{item.status}</td>
                                                     <td>{item.accomodation}</td>
                                                     <td>
-                                                        {item.status === 'CONFIRMED' && <button className="btn btn-danger" onClick={ () => handleShowModalCancel(item) }>Cancelar</button>}
+                                                        {item.status === 'CONFIRMED' && <button className={`${styles.edit_btn} `} onClick={ () => handleShowModalCancel(item) }>Cancelar</button>}
                                                     </td>
                                                 </tr>
                                             );
@@ -111,6 +115,9 @@ const handleCloseModalCancel = () => {
                                 </tbody>
                             </table>
                       </div>
+                      
+                      </div>
+
                       
                         
                         {/* Modal 

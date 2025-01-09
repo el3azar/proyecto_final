@@ -1,0 +1,54 @@
+.aline{
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+    padding-right: 9%;
+}
+
+/* Estilo personalizado para el botón */
+.customBtn {
+    background-color: #C0D0EF; /* Color de fondo rojo */
+    color: (8, 34, 63);              /* Color del texto */
+    border: none;              /* Eliminar borde */
+    border-radius: 5px;        /* Bordes redondeados */
+    padding: 10px 20px;        /* Espaciado dentro del botón */
+    font-size: 16px;           /* Tamaño del texto */
+    display: flex;
+    align-items: center;       /* Alinea icono y texto verticalmente */
+    justify-content: center;   /* Centra el contenido */
+    cursor: pointer;          /* Muestra un cursor de puntero */
+    transition: background-color 0.3s ease; /* Transición suave para cambio de color */
+    
+  }
+  
+  /* Efecto al pasar el mouse por encima */
+  .customBtn:hover {
+    background-color: #14448d; /* Color más oscuro al pasar el mouse */
+    color: #f5f5f5;
+}
+  
+/* Estilo para los encabezados de las tablas */
+table thead th {
+    background-color: #d1dce9 !important; /* Fondo gris oscuro */
+    color: white; /* Texto blanco */
+    text-align: center; /* Centrado del texto */
+    /*font-weight: bold; /* Negrita */
+    padding: 10px; /* Espaciado interno */
+    border-bottom: 1px solid #140361; /* Borde inferior azul */
+    
+}
+
+
+.edit_btn {
+    background-color: #090a46; /* Amarillo Bootstrap */
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px 12px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de fuente */
+    cursor: pointer; /* Mano al pasar */
+    display: flex; /* Flex para icono + texto */
+    align-items: center; /* Centrado vertical */
+    gap: 5px; /* Espaciado entre icono y texto */
+    transition: background-color 0.3s ease; /* Transición suave */
+}

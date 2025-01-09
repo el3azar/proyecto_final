@@ -68,10 +68,13 @@ const handleEditAlojamiento = (item) => {
                     <Navegacion/>
                         <section className='d-flex justify-content-between'>
                             <h1>Lista de Alojamientos</h1>
-                            <button onClick={() => handleShowModal()}><IoIosAddCircle />Nuevo Alojamiento</button>
                         </section>
-                       
-                        <div className="table-responsive">
+                        <div className={`${styles.aline} `}>
+                            <button className={`${styles.customBtn} `} onClick={() => handleShowModal()}><IoIosAddCircle />Nuevo Alojamiento</button>
+                        </div>
+
+                        <div className='container '>
+                            <div className="table-responsive">
                             <table className="table table-striped">
                                 <thead>
                                     <tr>
@@ -94,7 +97,7 @@ const handleEditAlojamiento = (item) => {
                                                     <td><img src={item.image} alt={item.name} style={{ width: '75%' }} /></td>
                                                     <td>{item.address}</td>
                                                     <td>{item.description}</td>
-                                                    <td> <button className="btn btn-danger" onClick={() => handleEditAlojamiento(item)}><MdModeEdit /></button></td>
+                                                    <td> <button className={`${styles.edit_btn} `}  onClick={() => handleEditAlojamiento(item)}><MdModeEdit /></button></td>
                                                 </tr>
                                             )
                                         })
@@ -103,6 +106,11 @@ const handleEditAlojamiento = (item) => {
                             </table>
                             
                         </div>
+                        </div>
+
+
+                        
+                        
                         <NewAccomodation showModal={showModal} handleCloseModal={handleCloseModal}  />
 
                        

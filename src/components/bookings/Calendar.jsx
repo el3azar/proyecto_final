@@ -70,9 +70,9 @@ export default function () {
               <Navegacion />
             </header>
             <h1>Calendario</h1>
-            <section>
-              <h3>Seleccione el alojamiento</h3>
-              <form onSubmit={handleSubmit(calendario)}>
+            <section className='container'>
+              <h4>Seleccione el alojamiento</h4>
+              <form onSubmit={handleSubmit(calendario)} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 {/* Sección del combobox */}
                 <select className="form-select" {...register('accomodation_id')} id="opciones">
                   {accomodations.map((item) => (
@@ -81,15 +81,15 @@ export default function () {
                     </option>
                   ))}
                 </select>
-                <div className="mt-5">
-                  <button type="submit" className="btn btn-primary">
+                <div className="mt-2">
+                  <button type="submit" className={`${styles.customBtn} `}>
                     Filtrar
                   </button>
                 </div>
               </form>
             </section>
 
-            <section className="mt-5">
+            <section className="mt-5 container">
               
               {/* Nuevo: Renderizar FullCalendar */}
               <FullCalendar
