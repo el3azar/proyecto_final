@@ -1,6 +1,6 @@
 .navbar {
     background-color: #090a46; /* Cambia el color de fondo */
-    margin-top: 0;
+    margin:0;
   }
 
   .navbar .nav-link {
@@ -19,4 +19,5 @@
   .btn-outline-success:hover {
     background-color: #ffffff; /* Fondo al pasar el mouse */
     color: #090a46; /* Color del texto al pasar el mouse */
+    
   }
