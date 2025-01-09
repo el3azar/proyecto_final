@@ -57,17 +57,19 @@ export default function Home() {
             {
               accomodations.slice(0, 6).map((item) =>(
               <div className="col-md-4 mt-4 col-6" key={item.id}>
-                <div className="card h-100">
-                  <img
-                    src={item.image}
-                    className="card-img-top"
-                    alt={item.name}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{item.name}</h5>
-                    <p className="card-text">{item.address}</p>
-                  </div>
-                </div>
+                 <Link to={`/alojamientos`} className="text-decoration-none" title={`Ver más sobre ${item.name}`}>
+                    <div className="card h-100">
+                      <img
+                        src={item.image}
+                        className="card-img-top"
+                        alt={item.name}
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title">{item.name}</h5>
+                        <p className="card-text">{item.address}</p>
+                      </div>
+                    </div>
+                  </Link>
              </div>
 
               ))

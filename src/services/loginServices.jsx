@@ -27,7 +27,14 @@ const getAllUser= async () => {
 }
 
 const logout = () => {
-    console.log("Has cerrado sesion");
-}
-
+   
+    if (sessionStorage.getItem('token_bookings')) {
+      sessionStorage.removeItem('token_bookings');
+    }
+    if (sessionStorage.getItem('correo_user')) {
+      sessionStorage.removeItem('correo_user');
+    }
+  
+  };
+  
 export { login, logout,getAllUser }

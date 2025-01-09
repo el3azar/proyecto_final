@@ -1,12 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Login from './Login'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import styles from '../styles/Navegacion.module.css';
+import { logout } from '../services/loginServices';
+import Swal from 'sweetalert2';
 
-export default function () {
+export default function Navegacion() {
+  const navigate = useNavigate();
+  // Método para cerrar sesión
+  const cerrar_sesion = () => {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Tu sesión será cerrada y deberás iniciar sesión nuevamente.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, cerrar sesión",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logout(); // Llamar al método para cerrar sesión
+        Swal.fire({
+          title: "Sesión cerrada",
+          text: "Has cerrado sesión exitosamente.",
+          icon: "success",
+          timer: 1500, // Tiempo en milisegundos
+          showConfirmButton: false,
+        }).then(() => {
+          navigate("/"); // Redirigir al login
+        });
+      }
+    });
+  };
   return (
         <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>
                   <section className="container-fluid">
@@ -28,7 +56,9 @@ export default function () {
                         </li>
                       </ul>
                       <form className="d-flex" role="search">
-                        <button className={`btn btn-outline-success ${styles['btn-outline-success']}`} type="button">Cerrar Sesión</button>
+                      <button className={`btn btn-outline-success ${styles['btn-outline-success']}`} type="button"
+                      onClick={cerrar_sesion}> Cerrar Sesión</button>
+              
                       </form>
                     </div>
                   </section>
