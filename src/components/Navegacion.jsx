@@ -14,7 +14,7 @@ export default function () {
                     
                    
                     <div className="collapse navbar-collapse bg-secondary" id="navbarSupportedContent">
-                      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                      <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li className="nav-item">
                           <Link to="/home" className="nav-link active" aria-current="page" >Inicio</Link>
                         </li>
