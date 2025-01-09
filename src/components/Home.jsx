@@ -14,6 +14,8 @@ export default function Home() {
   const [user, setUser] = useState(false)
   //estado para guardar los alojamientos
   const [accomodations, setAccomodations] = useState([])
+  //estado para la carga de datos
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
 
   //metodo para verificar si el usuario esta autenticado
@@ -30,9 +32,17 @@ export default function Home() {
 
   //metodo para obtener la respuesta de la api de accomodation
   const fetchData = async (session_token) => {
-    const response = await getAccomodations(session_token) //si esto es un exito devolvera un arreglo de alojamientos
-    setAccomodations(response);
+    try{
+      const response = await getAccomodations(session_token) //si esto es un exito devolvera un arreglo de alojamientos
+      setAccomodations(response);
+    }catch(error){
+      console.log(error)
+    }finally{
+      setLoading(false)
+    }
+  
 }
+
 
   return (
     <div> 
@@ -40,43 +50,55 @@ export default function Home() {
       {
         user ? (
           <>
-          <header>
-            <Navegacion/>
-          </header>
+            <header>
+              <Navegacion/>
+            </header>
 
-          <main className={styles.hero}>
-          {/* Contenido principal */}
-          <h1 className={`mt-5 ${styles.overlay}`}>BIENVENIDOS A LA APP DE ALOJAMIENTOS Y RESERVACIONES</h1>
-           </main>
-          
-      
-        {/* Destinations */}
-        <section className="container destinations py-5">
-          <div className="row">
-
+            {/* Parte de carga de datos */}
+            
+            {loading && (
+              <div className="text-center mt-4">
+                <p className="alert alert-info">Cargando datos...</p>
+              </div>
+            )}
+            
             {
-              accomodations.slice(0, 6).map((item) =>(
-              <div className="col-md-4 mt-4 col-6" key={item.id}>
-                 <Link to={`/alojamientos`} className="text-decoration-none" title={`Ver más sobre ${item.name}`}>
-                    <div className="card h-100">
-                      <img
-                        src={item.image}
-                        className="card-img-top"
-                        alt={item.name}
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">{item.name}</h5>
-                        <p className="card-text">{item.address}</p>
-                      </div>
-                    </div>
-                  </Link>
-             </div>
+              !loading && (
+                <>
+                  <main className={styles.hero}>
+                    {/* Contenido principal */}
+                    <h1 className={`mt-5 ${styles.overlay}`}>BIENVENIDOS A LA APP DE ALOJAMIENTOS Y RESERVACIONES</h1>
+                  </main>
+                  {/* Destinations */}
+                  <section className="container destinations py-5">
+                    <div className="row">
 
-              ))
+                      {
+                        accomodations.slice(0, 6).map((item) =>(
+                        <div className="col-md-4 mt-4 col-6" key={item.id}>
+                          <Link to={`/alojamientos`} className="text-decoration-none" title={`Ver más sobre ${item.name}`}>
+                              <div className="card h-100">
+                                <img
+                                  src={item.image}
+                                  className="card-img-top"
+                                  alt={item.name}
+                                />
+                                <div className="card-body">
+                                  <h5 className="card-title">{item.name}</h5>
+                                  <p className="card-text">{item.address}</p>
+                                </div>
+                              </div>
+                            </Link>
+                        </div>
+
+                        ))
+                      }
+                    
+                    </div>
+                </section>
+              </>
+              )
             }
-          
-          </div>
-        </section>
 
          
           </>
