@@ -70,11 +70,11 @@ export default function () {
               <Navegacion />
             </header>
             <h1>Calendario</h1>
-            <section className='container'>
+            <section className='container ' style={{ display: 'col', textAlign:"center" }}>
               <h4>Seleccione el alojamiento</h4>
-              <form onSubmit={handleSubmit(calendario)} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <form onSubmit={handleSubmit(calendario)} style={{ display: 'flex', alignItems: 'center', gap: '10px', alignContent:'center', justifyContent:'center'}}>
                 {/* Sección del combobox */}
-                <select className="form-select" {...register('accomodation_id')} id="opciones">
+                <select className="form-select w-25" {...register('accomodation_id')} id="opciones">
                   {accomodations.map((item) => (
                     <option key={item.id} value={item.id}>
                       {item.name}
@@ -82,7 +82,7 @@ export default function () {
                   ))}
                 </select>
                 <div className="mt-2">
-                  <button type="submit" className={`${styles.customBtn} `}>
+                  <button type="submit" className={`${styles.customBtn} `} >
                     Filtrar
                   </button>
                 </div>

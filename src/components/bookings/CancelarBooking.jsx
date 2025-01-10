@@ -38,12 +38,10 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
     {/* Modal */}
     <div className={`modal fade ${showModalCancel ? "show" : ""}`} style={{ display: showModalCancel ? "block" : "none" }} tabIndex="-1" role="dialog" >
       <div className="modal-dialog" role="document">
-        <div className="modal-content">
+        <div className={ ` modal-content ${styles.cont } `}>
           {/* header del modal */}
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">Detalles de la Reservación</h5>
-            <button type="button" className="close" onClick={handleCloseModalCancel} aria-label="Close" >
-            <span aria-hidden="true">&times;</span> </button>
+            <h5 className="modal-title" id="exampleModalLabel"  style={{ textAlign: 'center', width: '100%' }}>Detalles de la Reservación</h5>
           </div>
           {/* cuerpo del modal */}
           <div className="modal-body">
@@ -87,8 +85,8 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
 
               {/* Footer del modal, se agrego dentro del form para que funcione el boton submit */}
               <div className="modal-footer ">
-                <button type="button" className="btn btn-secondary" onClick={handleCloseModalCancel} >Cerrar</button>
-                <button type="submit" className="btn btn-danger">Cancelar Reservación</button>
+                <button type="button" className={`${styles.btnCerrar} `} onClick={handleCloseModalCancel} >Cerrar</button>
+                <button type="submit" className={`${styles.btnGuardar} `} >Cancelar Reservación</button>
               </div>
 
             </form>

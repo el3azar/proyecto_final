@@ -55,12 +55,11 @@ export default function NewBooking({ showModal, handleCloseModal}) {
       <div
         className={`modal fade ${showModal ? "show" : ""}`} style={{ display: showModal ? "block" : "none" }} tabIndex="-1" role="dialog" >
         <div className="modal-dialog" role="document">
-          <div className="modal-content">
+          <div className={ ` modal-content ${styles.cont } `}>
             {/* header del modal */}
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Nueva Reservación</h5>
-              <button type="button" className="close" onClick={handleCloseModal} aria-label="Close" >
-              <span aria-hidden="true">&times;</span> </button>
+              <h5 className="modal-title" id="exampleModalLabel"  style={{ textAlign: 'center', width: '100%' }}>Nueva Reservación</h5>
+              
             </div>
             {/* cuerpo del modal */}
             <div className="modal-body">
@@ -106,9 +105,9 @@ export default function NewBooking({ showModal, handleCloseModal}) {
                 </section>
 
                 {/* Footer del modal, se agrego dentro del form para que funcione el boton submit */}
-                <div className="modal-footer ">
-                  <button type="button" className="btn btn-secondary" onClick={handleCloseModal} >Cancelar</button>
-                  <button type="submit" className="btn btn-primary">Guardar</button>
+                <div className={`modal-footer ${styles.mfB} `}>
+                  <button type="button" className={`${styles.btnCancelarB} `} onClick={handleCloseModal} >Cancelar</button>
+                  <button type="submit" className={`${styles.btnGuardarB} `}  >Guardar</button>
                 </div>
 
               </form>
