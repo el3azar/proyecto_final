@@ -31,14 +31,12 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
     <div >
   
         {/* Modal */}
-            <div className={`modal fade ${showModal ? 'show' : ''}`} style={{ display: showModal ? 'block' : 'none' }} tabIndex="-1" role="dialog">
-                 <div className="modal-dialog" role="document">
-                    <div className="modal-content">           
+            <div className={`modal fade ${showModal ? 'show' : ''}`  } style={{ display: showModal ? 'block' : 'none' }} tabIndex="-1" role="dialog">
+                 <div className="modal-dialog " role="document">
+                    <div className={ ` modal-content ${styles.cont } `} >           
                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Nuevo Alojamiento</h5>
-                            <button type="button" className="close" onClick={handleCloseModal} aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
+                            <h5 className="modal-title" id="exampleModalLabel"  style={{ textAlign: 'center', width: '100%' }} >Nuevo Alojamiento</h5>
+                            
                         </div>
                         <div className="modal-body">
                            <form onSubmit={handleSubmit(guardarAlojamiento)}>
@@ -56,8 +54,8 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
                                 </div>
 
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Cancelar</button>
-                                    <button type="submit" className="btn btn-primary">Guardar Cambios</button>
+                                    <button type="button" className={`${styles.btnCancelar} `} onClick={handleCloseModal}>Cancelar</button>
+                                    <button type="submit" className={`${styles.btnGuardar} `}>Guardar Cambios</button>
                                 </div>
                             </form>           
                         </div>            

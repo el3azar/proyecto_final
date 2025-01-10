@@ -1,0 +1,62 @@
+/* Contenedor del modal */
+.cont {
+    background-color: #d9e5f1;
+    width: 600px;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  
+  /* Estilo personalizado para el botón guardar */
+  .btnGuardar {
+      text-align: center;
+      padding: 8px 20px;        /* Espaciado dentro del botón */
+      font-size: 15px;           /* Tamaño del texto */
+      background-color: #021334;; /* Color de fondo rojo */
+      color: white;              /* Color del texto */
+      border: none;              /* Eliminar borde */
+      border-radius: 5px;        /* Bordes redondeados */
+      display: flex;
+      cursor: pointer;          /* Muestra un cursor de puntero */
+      transition: background-color 0.3s ease; /* Transición suave para cambio de color */
+      margin-top:10px;
+     
+    }
+    /* Efecto al pasar el mouse por encima */
+    .btnGuardar:hover {
+      background-color:#021334e3;; /* Color más oscuro al pasar el mouse */
+      color: white;
+  }
+  
+  
+  /* Estilo personalizado para el botón cancelar */
+  .btnCerrar {
+      text-align: center;
+      padding: 8px 20px;        /* Espaciado dentro del botón */
+      font-size: 15px;           /* Tamaño del texto */
+      background-color: #99b3e9; /* Color de fondo rojo */
+      color: (8, 34, 63);              /* Color del texto */
+      border: none;              /* Eliminar borde */
+      border-radius: 5px;        /* Bordes redondeados */
+      display: flex;
+      cursor: pointer;          /* Muestra un cursor de puntero */
+      transition: background-color 0.3s ease; /* Transición suave para cambio de color */
+      margin-top: 10px;
+     
+    }
+    
+    /* Efecto al pasar el mouse por encima */
+    .btnCerrar:hover {
+      background-color: #14448d; /* Color más oscuro al pasar el mouse */
+      color: #f5f5f5;
+  }
+
+  .mfB {
+    display: flex;            /* Activa Flexbox */
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente (si es necesario) */
+    gap: 10px;                /* Espaciado entre los botones */
+    padding: 1rem;            /* Ajusta el espaciado interno del contenedor */
+  }
