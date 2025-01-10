@@ -14,7 +14,7 @@
       text-align: center;
       padding: 8px 20px;        /* Espaciado dentro del botón */
       font-size: 15px;           /* Tamaño del texto */
-      background-color: #021334;; /* Color de fondo rojo */
+      background-color: #021334;
       color: white;              /* Color del texto */
       border: none;              /* Eliminar borde */
       border-radius: 5px;        /* Bordes redondeados */
@@ -36,7 +36,7 @@
       text-align: center;
       padding: 8px 20px;        /* Espaciado dentro del botón */
       font-size: 15px;           /* Tamaño del texto */
-      background-color: #99b3e9; /* Color de fondo rojo */
+      background-color: #99b3e9; 
       color: (8, 34, 63);              /* Color del texto */
       border: none;              /* Eliminar borde */
       border-radius: 5px;        /* Bordes redondeados */

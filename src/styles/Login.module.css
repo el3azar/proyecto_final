@@ -30,7 +30,7 @@
 
 /* Estilo personalizado para el botón */
 .customBtn {
-    background-color: #C0D0EF; /* Color de fondo rojo */
+    background-color: #C0D0EF; 
     color: (8, 34, 63);              /* Color del texto */
     border: none;              /* Eliminar borde */
     border-radius: 5px;        /* Bordes redondeados */

@@ -15,7 +15,7 @@
       text-align: center;
       padding: 8px 20px;        /* Espaciado dentro del botón */
       font-size: 15px;           /* Tamaño del texto */
-      background-color: #021334;; /* Color de fondo rojo */
+      background-color: #021334;
       color: white;              /* Color del texto */
       border: none;              /* Eliminar borde */
       border-radius: 5px;        /* Bordes redondeados */
@@ -37,7 +37,7 @@
       text-align: center;
       padding: 8px 20px;        /* Espaciado dentro del botón */
       font-size: 15px;           /* Tamaño del texto */
-      background-color: #99b3e9; /* Color de fondo rojo */
+      background-color: #99b3e9; 
       color: (8, 34, 63);              /* Color del texto */
       border: none;              /* Eliminar borde */
       border-radius: 5px;        /* Bordes redondeados */
@@ -55,9 +55,9 @@
   }
 
   .mfB {
-    display: flex;            /* Activa Flexbox */
-    justify-content: center;  /* Centra horizontalmente */
-    align-items: center;      /* Centra verticalmente (si es necesario) */
-    gap: 10px;                /* Espaciado entre los botones */
-    padding: 1rem;            /* Ajusta el espaciado interno del contenedor */
+    display: flex;            
+    justify-content: center;  
+    align-items: center;      
+    gap: 10px;                
+    padding: 1rem;            
   }
