@@ -5,7 +5,6 @@ import { getBookings } from '../../services/bookingServices'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import NewBooking from './NewBooking';
-import { getToken } from '../Login';
 import CancelarBooking from './CancelarBooking';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/bookings/Bookings.module.css';
@@ -103,11 +102,11 @@ const handleCloseModalCancel = () => {
                             <section className='d-flex justify-content-between'>
                                  <h1>Lista de Reservaciones</h1>
                             </section>
-                            <div className={`${styles.aline} `}>
+                            <section className={`${styles.aline} `}>
                                 <button className={`${styles.customBtn} `} onClick={() => handleShowModal()}><IoIosAddCircle />Nueva Reservacion</button>
-                            </div>
+                            </section>
 
-                            <div className='container'>
+                            <section className='container'>
                                 <div className="table-responsive">
                                     <table className="table table-striped">
                                         <thead >
@@ -146,7 +145,7 @@ const handleCloseModalCancel = () => {
                                     </table>
                                 </div>
                       
-                            </div>
+                            </section>
                             {/* Modal 
                              Se pasa como props el estado showModal que ya va en true porque se activa al
                              darle en nueva reservacion y el metodo para cerrar el modal el cual se va a ejecutar en el modal

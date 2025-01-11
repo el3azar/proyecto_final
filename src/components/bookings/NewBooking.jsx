@@ -77,21 +77,21 @@ export default function NewBooking({ showModal, handleCloseModal}) {
   return (
     <div>
       {/* Modal */}
-      <div  className={`modal fade ${showModal ? "show" : ""} data-bs-backdrop="true" `} style={{ display: showModal ? "block" : "none" }} 
+      <main  className={`modal fade ${showModal ? "show" : ""} data-bs-backdrop="true" `} style={{ display: showModal ? "block" : "none" }} 
       tabIndex="-1" role="dialog" data-bs-backdrop="true"  onClick={handleCloseModal}  >
         <div className="modal-dialog" role="document" onClick={(e) => e.stopPropagation()}>
-          <div className={ ` modal-content ${styles.cont } `}>
+          <section className={ ` modal-content ${styles.cont } `}>
             {/* header del modal */}
-            <div className="modal-header">
+            <section className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel"  style={{ textAlign: 'center', width: '100%' }}>Nueva Reservación</h5>
               
-            </div>
+            </section>
             {/* cuerpo del modal */}
-            <div className="modal-body">
+            <section className="modal-body">
               {/* Formulario */}
               <form onSubmit={handleSubmit(guardarReservacion)}>
                 {/* Combobox con alojamientos */}
-                <div className="form-group">
+                <article className="form-group">
                   <label htmlFor="opciones" className="text-start">Alojamiento</label>
                   <select className={`form-select ${errors.accomodation_id ? "is-invalid" : ""}`}
                     {...register("accomodation_id", { required: "Por favor selecciona un alojamiento." })} id="opciones">
@@ -103,28 +103,28 @@ export default function NewBooking({ showModal, handleCloseModal}) {
                   {errors.accomodation_id && (
                     <div className="invalid-feedback">{errors.accomodation_id.message}</div>
                   )}
-                </div>
+                </article>
 
                 {/* Input de Booking */}
-                <div className="form-group">
+                <article className="form-group">
                   <label htmlFor="code_booking" className="col-form-label">Booking</label>
                   <input type="text" className={`form-control ${errors.booking ? "is-invalid" : ""}`} id="code_booking"
                     {...register("booking", { required: "El código de booking es obligatorio." })} />
                   {/* Mensaje de error */}
                   {errors.booking && (<div className="invalid-feedback">{errors.booking.message}</div> )}
-                </div>
+                </article>
 
                 {/* Input de Total */}
-                <div className="form-group">
+                <article className="form-group">
                   <label htmlFor="total" className="col-form-label">Total</label>
                   <input type="text" className={`form-control ${errors.total_amount ? "is-invalid" : ""}`} id="total"
                     {...register("total_amount", { required: "El total es obligatorio." })}/>
                   {/* Mensaje de error */}
                   {errors.total_amount && (<div className="invalid-feedback">{errors.total_amount.message}</div>)}
-                </div>
+                </article>
 
                 {/* Sección de Fechas */}
-                <section className="form-group d-flex justify-content-between">
+                <article className="form-group d-flex justify-content-between">
                   <div className="col-5">
                     <label htmlFor="start-date" className="col-form-label">Fecha de Inicio</label>
                     <input type="date" className={`form-control ${errors.check_in_date ? "is-invalid" : ""}`} id="start-date"
@@ -139,21 +139,21 @@ export default function NewBooking({ showModal, handleCloseModal}) {
                     {/* Mensaje de error */}
                     {errors.check_out_date && ( <div className="invalid-feedback">{errors.check_out_date.message}</div>)}
                   </div>
-                </section>
+                </article>
 
                 {/* Footer del modal */}
-                <div className={`modal-footer ${styles.mfB}`}>
+                <article className={`modal-footer ${styles.mfB}`}>
                   <button type="button" className={`${styles.btnCancelarB}`} onClick={handleCloseModal}>Cancelar</button>
                   <button type="submit" className={`${styles.btnGuardarB}`}> Guardar</button>
-                </div>
+                </article>
               </form>
 
 
-            </div>
+            </section>
             
-          </div>
+          </section>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
