@@ -54,23 +54,23 @@ export default function Navegacion() {
 </button>
 
                     <div className={`collapse navbar-collapse `} id="navbarSupportedContent">
-                      <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
+                      <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4 ">
                         <li className="nav-item ">
                           <Link to="/home" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Inicio</Link>
                         </li>
-                        <li className="nav-item ms-2">
+                        <li className="nav-item ">
                         <Link to="/alojamientos" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Alojamientos</Link>
                         </li>
                         
-                        <li className="nav-item ms-2 ">
+                        <li className="nav-item  ">
                         <Link to="/reservaciones" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Reservaciones</Link>
                         </li>
-                        <li className="nav-item ms-2">
+                        <li className="nav-item ">
                         <Link to="/calendario" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Calendario</Link>
                         </li>
                       </ul>
                       <form className="d-flex" role="search">
-                      <button className={`btn btn-outline-success ${styles['btn-outline-success']}`} type="button"
+                      <button className={`btn btn-outline-success  ms-3 ${styles['btn-outline-success']}`} type="button"
                       onClick={cerrar_sesion}> Cerrar Sesión</button>
               
                       </form>
