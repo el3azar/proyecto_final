@@ -110,8 +110,8 @@ export default function UpdateAccomodation() {
 
             {/* Botón de enviar */}
             <div className="col-md-12" style={{ display: 'flex', justifyContent: 'center' }}>
-              <Link to="/alojamientos" className={`me-4 text-decoration-none text-black ${styles.btnActualizar} `} ><IoIosArrowRoundBack />Regresar</Link>
-              <button type="submit" className={`  ${styles.btnActualizar} `}> Actualizar</button>
+              <Link to="/alojamientos" className={`me-4 text-decoration-none text-black ${styles.btnRegresar} `} ><IoIosArrowRoundBack />Regresar</Link>
+              <button type="submit" className={`${styles.btnActualizar}`}> Actualizar</button>
               
             </div>
           </form>
