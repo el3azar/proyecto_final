@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import styles from '../styles/Navegacion.module.css';
 import { logout } from '../services/loginServices';
 import Swal from 'sweetalert2';
+import { TbBackground } from 'react-icons/tb';
 
 export default function Navegacion() {
   const navigate = useNavigate();
@@ -38,7 +39,20 @@ export default function Navegacion() {
   return (
         <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>
                   <section className="container-fluid">
-                                       
+                  
+                  <button
+  className="navbar-toggler btn-primary" /* Cambiar el color con clases de Bootstrap */
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarSupportedContent"
+  aria-controls="navbarSupportedContent"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+  style={{background:"#8aaedf"}}
+>
+  <span className="navbar-toggler-icon"></span>
+</button>
+
                     <div className={`collapse navbar-collapse `} id="navbarSupportedContent">
                       <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
                         <li className="nav-item ">
