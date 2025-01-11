@@ -24,7 +24,8 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
         title: "Alojamiento almacenado con exito!",
         icon: "success",
         draggable: true,
-        timer: 3000
+        timer: 3000,
+        showConfirmButton: false 
         });
         handleCloseModal(); // Cerrar el modal después de guardar la reservación
         reset(); // Resetear el formulario después de guardar
@@ -66,9 +67,8 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
 
                                 <div className="form-group">
                                     <label htmlFor="message-text" className="col-form-label">Descripción</label>
-                                    <textarea 
-                                    className={`form-control ${errors.description ? "is-invalid" : ""}`} 
-                                    id="message-text" 
+                                    <textarea className={`form-control ${errors.description ? "is-invalid" : ""}`} 
+                                    id="message-text"  
                                     {...register("description", { required: "La descripción es obligatoria" })}>
                                     </textarea>
                                     

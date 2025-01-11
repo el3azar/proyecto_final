@@ -45,3 +45,23 @@
   background-color: #14448d; /* Color más oscuro al pasar el mouse */
   color: #f5f5f5;
 }
+
+/* Estilo mejorado para textarea */
+.textareaa {
+  height: auto; /* Asegura que ocupe todo el ancho disponible */
+  min-height: 50px; /* Altura mínima para que no sea demasiado pequeño */
+  max-height: 500px; /* Límite para evitar que sea demasiado alto */
+  padding: 8px; /* Espaciado interno para que el texto no esté pegado al borde */
+  border: 1px solid #ced4da; /* Borde similar al de Bootstrap */
+  border-radius: 4px; 
+  overflow-y: auto; /* Agrega barras de desplazamiento solo si es necesario */
+  
+}
+
+/* Estilo para cuando está enfocado */
+.textareaa:focus {
+  outline: none; /* Elimina el borde azul predeterminado */
+  border-color: #80bdff; /* Borde azul más elegante */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25); /* Sombra para efecto visual */
+}
+

@@ -7,6 +7,7 @@ import NewAccomodation from './NewAccomodation';
 import styles from '../../styles/accomodation/Accomodation.module.css';
 
 import { useNavigate } from 'react-router-dom';
+import UpdateAccomodation from './UpdateAccomodation';
 
 export default function Accomodations() {
     const [accomodations, setAccomodations] = useState([])
@@ -16,6 +17,10 @@ export default function Accomodations() {
     const [showModal, setShowModal] = useState(false);
     //estado para la carga de datos
     const [loading, setLoading] = useState(true)
+    //estado para mostrar el modal de editar alojamiento
+      const [showModalUpdate, setShowModalUpdate] = useState(false);
+    // Estado  para el alojamiento seleccionado
+    const [selectedAccomodation, setSelectedAccomodation] = useState(null);
 
 
     const navigate = useNavigate()
@@ -48,7 +53,7 @@ export default function Accomodations() {
 
     }, [])
 
-    //metodos para abrir y cerrar el modal
+//metodos para abrir y cerrar el modal de nuevo alojamiento
 const handleShowModal = () => {
     setShowModal(true);
 };
@@ -61,18 +66,23 @@ const handleCloseModal = () => {
           fetchData(session_token)
       }
 };
-
-//funciones para edicion
-const handleEditAlojamiento = (item) => {
-   
-    if (item) {
-        // Navegación al componente asignado en la ruta
-        navigate(`/updateAlojamiento`, { state: { item } });
-    }
-    
-    
+//metodos para abrir y cerrar el modal de editar alojamiento
+const handleShowModalUpdate = (item) => {
+    setSelectedAccomodation(item); // Asigna el item seleccionado al estado
+    setShowModalUpdate(true);
+    console.log(item);
     
 };
+
+const handleCloseModalUpdate = () => {
+    
+    setShowModalUpdate(false)
+    const session_token = sessionStorage.getItem('token_bookings');
+      if(session_token){
+          fetchData(session_token)
+      }
+};
+
 
 
     return (
@@ -122,7 +132,7 @@ const handleEditAlojamiento = (item) => {
                                                                 <td><img src={item.image} alt={item.name} style={{ width: '75%' }} /></td>
                                                                 <td>{item.address}</td>
                                                                 <td>{item.description}</td>
-                                                                <td> <button className={`${styles.edit_btn} `}  onClick={() => handleEditAlojamiento(item)}><MdModeEdit /></button></td>
+                                                                <td> <button className={`${styles.edit_btn} `}  onClick={() => handleShowModalUpdate(item)}><MdModeEdit /></button></td>
                                                             </tr>
                                                         )
                                                     })
@@ -133,6 +143,7 @@ const handleEditAlojamiento = (item) => {
                                     </div>
                                 </div>
                                 <NewAccomodation showModal={showModal} handleCloseModal={handleCloseModal}  />
+                                <UpdateAccomodation showModalUpdate={showModalUpdate} handleCloseModalUpdate={handleCloseModalUpdate} selectedAccomodation={selectedAccomodation} />
 
                             </>
                         )}       

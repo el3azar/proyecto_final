@@ -42,7 +42,7 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
                   Swal.fire({
                     title: 'Reservación cancelada',
                     icon: 'success',
-                    timer: 3000,  // Tiempo en milisegundos (5000 ms = 5 segundos)
+                    timer: 3000,  // Tiempo en milisegundos (3000 ms = 3 segundos)
                     timerProgressBar: true,  // Muestra una barra de progreso
                     showConfirmButton: false  // No muestra el botón de confirmación
                   });
