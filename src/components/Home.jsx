@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Login from './Login'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import Navegacion from './Navegacion';
@@ -10,12 +9,14 @@ import { getAccomodations } from '../services/accomodationServices'
 
 
 export default function Home() {
-    //estado donde vamos a verificar si el usuario esta autenticado
+  //estado donde vamos a verificar si el usuario esta autenticado
   const [user, setUser] = useState(false)
   //estado para guardar los alojamientos
   const [accomodations, setAccomodations] = useState([])
   //estado para la carga de datos
   const [loading, setLoading] = useState(true)
+
+
   const navigate = useNavigate()
 
   //metodo para verificar si el usuario esta autenticado
@@ -75,21 +76,17 @@ export default function Home() {
 
                       {
                         accomodations.slice(0, 6).map((item) =>(
-                        <div className="col-md-4 mt-4 col-6" key={item.id}>
-                          <Link to={`/alojamientos`} className="text-decoration-none" title={`Ver más sobre ${item.name}`}>
-                              <div className="card h-100">
-                                <img
-                                  src={item.image}
-                                  className="card-img-top"
-                                  alt={item.name}
-                                />
-                                <div className="card-body">
-                                  <h5 className="card-title">{item.name}</h5>
-                                  <p className="card-text">{item.address}</p>
+                          <article className="col-md-4 mt-4 col-6" key={item.id}>
+                            <Link to={`/alojamientos`} className="text-decoration-none" title={`Ver más sobre ${item.name}`}>
+                                <div className="card h-100">
+                                  <img src={item.image} className="card-img-top" alt={item.name}/>
+                                  <div className="card-body">
+                                    <h5 className="card-title">{item.name}</h5>
+                                    <p className="card-text">{item.address}</p>
+                                  </div>
                                 </div>
-                              </div>
-                            </Link>
-                        </div>
+                              </Link>
+                          </article>
 
                         ))
                       }

@@ -38,44 +38,35 @@ export default function Navegacion() {
   };
   return (
         <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>
-                  <section className="container-fluid">
-                  
-                  <button
-  className="navbar-toggler btn-primary" /* Cambiar el color con clases de Bootstrap */
-  type="button"
-  data-bs-toggle="collapse"
-  data-bs-target="#navbarSupportedContent"
-  aria-controls="navbarSupportedContent"
-  aria-expanded="false"
-  aria-label="Toggle navigation"
-  style={{background:"#8aaedf"}}
->
-  <span className="navbar-toggler-icon"></span>
-</button>
+          <section className="container-fluid">
+              <button className="navbar-toggler btn-primary" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation" style={{background:"#8aaedf"}}>
+              <span className="navbar-toggler-icon"></span></button>
 
-                    <div className={`collapse navbar-collapse `} id="navbarSupportedContent">
-                      <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4 ">
-                        <li className="nav-item ">
-                          <Link to="/home" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Inicio</Link>
-                        </li>
-                        <li className="nav-item ">
-                        <Link to="/alojamientos" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Alojamientos</Link>
-                        </li>
+              <div className={`collapse navbar-collapse `} id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4 ">
+                  <li className="nav-item ">
+                    <Link to="/home" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Inicio</Link>
+                  </li>
+                  <li className="nav-item ">
+                   <Link to="/alojamientos" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Alojamientos</Link>
+                  </li>
                         
-                        <li className="nav-item  ">
-                        <Link to="/reservaciones" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Reservaciones</Link>
-                        </li>
-                        <li className="nav-item ">
-                        <Link to="/calendario" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Calendario</Link>
-                        </li>
-                      </ul>
-                      <form className="d-flex" role="search">
-                      <button className={`btn btn-outline-success  ms-3 ${styles['btn-outline-success']}`} type="button"
-                      onClick={cerrar_sesion}> Cerrar Sesión</button>
+                  <li className="nav-item  ">
+                    <Link to="/reservaciones" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Reservaciones</Link>
+                  </li>
+                  <li className="nav-item ">
+                    <Link to="/calendario" className={`nav-link active ${styles['nav-link']}`} aria-current="page" >Calendario</Link>
+                  </li>
+                </ul>
+                <form className="d-flex" role="search">
+                  <button className={`btn btn-outline-success  ms-3 ${styles['btn-outline-success']}`} type="button"
+                  onClick={cerrar_sesion}> Cerrar Sesión</button>
               
-                      </form>
-                    </div>
-                  </section>
+                </form>
+             </div>
+          </section>
         </nav>
 
   

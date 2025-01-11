@@ -29,12 +29,8 @@ import { FaInfoCircle } from 'react-icons/fa';
         
     }
 
-    export default function Login() {
-        const { 
-            register, 
-            handleSubmit, 
-            formState: { errors } 
-        } = useForm();
+export default function Login() {
+        const { register, handleSubmit, formState: { errors } } = useForm();
     
         const navigate = useNavigate();
     
@@ -50,39 +46,35 @@ import { FaInfoCircle } from 'react-icons/fa';
     
         return (
             <div className={`${styles.formWrapper}`}>
-                <div className={`${styles.formContainer}`}>
+                <section className={`${styles.formContainer}`}>
                     <h1><FaArrowRightToBracket className="me-2" /> Iniciar Sesión</h1>
                     <form onSubmit={handleSubmit(loginForm)}>
-                        <div>
+                        <article>
                             <p><FaInfoCircle className="me-2" /> Ingresa tus credenciales para acceder al sistema </p>
-                        </div>
-                        <div className={`${styles.alineado} mb-3`}>
+                        </article>
+                        <article className={`${styles.alineado} mb-3`}>
                             <label htmlFor="email">Correo</label>
                             <input  type="email"  {...register('email', { 
-                                    required: "El correo es obligatorio", 
-                                    pattern: {
-                                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                                        message: "Ingresa un correo válido"
-                                    } 
-                                })}  className={`w-100 ${errors.email ? styles.inputError : ''}`}  />
+                            required: "El correo es obligatorio", 
+                            pattern:{value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                            message: "Ingresa un correo válido"} 
+                            })}  className={`w-100 ${errors.email ? styles.inputError : ''}`}  />
                             {errors.email && <p className={styles.errorMessage}>{errors.email.message}</p>}
-                        </div>
-                        <div className={`${styles.alineado} mb-3`}>
+                        </article>
+                        <article className={`${styles.alineado} mb-3`}>
                             <label htmlFor="password">Contraseña</label>
-                            <input type="password"  {...register('password', { 
-                            required: "La contraseña es obligatoria"})} 
+                            <input type="password"  {...register('password', { required: "La contraseña es obligatoria"})} 
                             className={`w-100 ${errors.password ? styles.inputError : ''}`} />
                             {errors.password && <p className={styles.errorMessage}>{errors.password.message}</p>}
-
-                        </div>
-                        <div className="d-flex justify-content-start">
+                        </article>
+                        <article className="d-flex justify-content-start">
                             <button type="submit" className={`${styles.customBtn} w-100`}> <FaArrowRightToBracket className="me-2" />
                                 Iniciar sesión
                             </button>
-                        </div>
+                        </article>
                     </form>
-                </div>
+                </section>
             </div>
         );
-    }
+}
     
