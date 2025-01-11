@@ -31,8 +31,7 @@
 table thead th {
     background-color: #d1dce9 !important; /* Fondo gris oscuro */
     color: white; /* Texto blanco */
-    text-align: center; /* Centrado del texto */
-    /*font-weight: bold; /* Negrita */
+    text-align:left !important; /* Centrado del texto */
     padding: 10px; /* Espaciado interno */
     border-bottom: 1px solid #140361; /* Borde inferior azul */
     
