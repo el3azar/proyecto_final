@@ -5,7 +5,6 @@ import { MdModeEdit } from "react-icons/md";
 import Navegacion from '../Navegacion';
 import NewAccomodation from './NewAccomodation';
 import styles from '../../styles/accomodation/Accomodation.module.css';
-
 import { useNavigate } from 'react-router-dom';
 import UpdateAccomodation from './UpdateAccomodation';
 
@@ -105,10 +104,10 @@ const handleCloseModalUpdate = () => {
                                 <section className='d-flex justify-content-between'>
                                     <h1>Lista de Alojamientos</h1>
                                 </section>
-                                <div className={`${styles.aline} `}>
+                                <section className={`${styles.aline} `}>
                                     <button className={`${styles.customBtn} `} onClick={() => handleShowModal()}><IoIosAddCircle />Nuevo Alojamiento</button>
-                                </div>
-                                <div className='container '>
+                                </section>
+                                <section className='container '>
                                     <div className="table-responsive">
                                         <table className="table table-striped">
                                             <thead>
@@ -141,7 +140,7 @@ const handleCloseModalUpdate = () => {
                                         </table>
                                     
                                     </div>
-                                </div>
+                                </section>
                                 <NewAccomodation showModal={showModal} handleCloseModal={handleCloseModal}  />
                                 <UpdateAccomodation showModalUpdate={showModalUpdate} handleCloseModalUpdate={handleCloseModalUpdate} selectedAccomodation={selectedAccomodation} />
 

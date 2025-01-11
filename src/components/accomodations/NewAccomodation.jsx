@@ -21,16 +21,14 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
         console.log(response);
         
         Swal.fire({
-        title: "Alojamiento almacenado con exito!",
-        icon: "success",
-        draggable: true,
-        timer: 3000,
-        showConfirmButton: false 
+            title: "Alojamiento almacenado con exito!",
+            icon: "success",
+            draggable: true,
+            timer: 3000,
+            showConfirmButton: false 
         });
         handleCloseModal(); // Cerrar el modal después de guardar la reservación
         reset(); // Resetear el formulario después de guardar
-        //aqui poner alertas con sweetalert
-        
         }
     
     }
@@ -40,9 +38,9 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
     <div >
   
         {/* Modal */}
-            <div className={`modal fade ${showModal ? 'show' : ''}`  } style={{ display: showModal ? 'block' : 'none' }} 
+            <main className={`modal fade ${showModal ? 'show' : ''}`  } style={{ display: showModal ? 'block' : 'none' }} 
             tabIndex="-1" role="dialog" data-bs-backdrop="true"  onClick={handleCloseModal}>
-                 <div className="modal-dialog " role="document" onClick={(e) => e.stopPropagation()}>
+                 <section className="modal-dialog " role="document" onClick={(e) => e.stopPropagation()}>
                     <div className={ ` modal-content ${styles.cont } `} >           
                        <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel"  style={{ textAlign: 'center', width: '100%' }} >Nuevo Alojamiento</h5>
@@ -50,22 +48,22 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
                         </div>
                         <div className="modal-body">
                            <form onSubmit={handleSubmit(guardarAlojamiento)}>
-                               <div className="form-group">
+                               <article className="form-group">
                                     <label htmlFor="name_alojamiento" className="col-form-label">Nombre*</label>
                                     <input type="text" className={`form-control ${errors.name ? "is-invalid" : ""}`} 
                                     id="name_alojamiento" {...register("name", { required: "El nombre es obligatorio" })} />
                                     
                                     {errors.name && <div className="invalid-feedback">{errors.name.message}</div>}
-                                </div>
-                                <div className="form-group">
+                                </article>
+                                <article className="form-group">
                                     <label htmlFor="name_direccion" className="col-form-label">Dirección*</label>
                                     <input type="text" className={`form-control ${errors.address ? "is-invalid" : ""}`} 
                                     id="name_direccion"{...register("address", { required: "La dirección es obligatoria" })} />
                                    
                                     {errors.address && <div className="invalid-feedback">{errors.address.message}</div>}
-                                </div>
+                                </article>
 
-                                <div className="form-group">
+                                <article className="form-group">
                                     <label htmlFor="message-text" className="col-form-label">Descripción</label>
                                     <textarea className={`form-control ${errors.description ? "is-invalid" : ""}`} 
                                     id="message-text"  
@@ -73,18 +71,18 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
                                     </textarea>
                                     
                                     {errors.description && <div className="invalid-feedback">{errors.description.message}</div>}
-                                </div>
+                                </article>
 
-                                <div className="modal-footer">
+                                <article className="modal-footer">
                                     <button type="button" className={`${styles.btnCancelar} `} onClick={handleCloseModal}>Cancelar</button>
                                     <button type="submit" className={`${styles.btnGuardar} `}>Guardar Cambios</button>
-                                </div>
+                                </article>
                             </form>           
                         </div>            
                            
                     </div>
-                </div>
-            </div>                                  
+                </section>
+            </main>                                  
     </div>
   )
 }
