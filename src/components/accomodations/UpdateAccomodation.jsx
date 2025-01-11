@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import { updateAccomodation } from '../../services/accomodationServices';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/accomodation/UpdateAccomodation.module.css';
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 export default function UpdateAccomodation() {
   const location = useLocation();
@@ -36,12 +39,29 @@ export default function UpdateAccomodation() {
       console.log(accomodation);
           
       if(isAuthenticated){//si existe el token, guardamos el alojamiento
-      //recibimos la data de la api
-      const response = await updateAccomodation(data.id, accomodation);
-      console.log(response);
+        Swal.fire({
+          title: "¿Estas seguro?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes!"
+        }).then(async(result) => {
+          if (result.isConfirmed) {
+            //recibimos la data de la api
+            const response = await updateAccomodation(data.id, accomodation);
+            console.log(response);  
+            Swal.fire({
+              title: "Actualizado!",
+              text: "El alojamiento ha sido actualizado.",
+              icon: "success"
+            });
+            //redireccionar a la pagina de alojamientos
+            navigate('/alojamientos');
+          }
+        });
       
-      //redireccionar a la pagina de alojamientos
-      navigate('/alojamientos');
+      
       
       
       }
@@ -90,7 +110,9 @@ export default function UpdateAccomodation() {
 
             {/* Botón de enviar */}
             <div className="col-md-12" style={{ display: 'flex', justifyContent: 'center' }}>
+              <Link to="/alojamientos" className={`me-4 text-decoration-none text-black ${styles.btnActualizar} `} ><IoIosArrowRoundBack />Regresar</Link>
               <button type="submit" className={`  ${styles.btnActualizar} `}> Actualizar</button>
+              
             </div>
           </form>
         </div>
