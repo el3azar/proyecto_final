@@ -21,10 +21,3 @@
     color: #090a46; /* Color del texto al pasar el mouse */
   }
 
-  /*RESPONSIVIDAD*/
-/* Estilos para el botón de colapso personalizado */
-@media (max-width: 992px) {
-  .navbar-toggler svg, .navbar-toggler .fa-bars {
-    color: #ffffff; /* Cambiar el color a blanco */
-  }
-}

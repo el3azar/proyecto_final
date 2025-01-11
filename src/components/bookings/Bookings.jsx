@@ -94,7 +94,7 @@ const handleCloseModalCancel = () => {
 
                       {loading && (
                         <div className="text-center mt-4">
-                            <p className="alert alert-info">Cargando datos...</p>
+                            <p >Cargando datos...</p>
                         </div>
                       )}
                       {
@@ -110,7 +110,7 @@ const handleCloseModalCancel = () => {
                             <div className='container'>
                                 <div className="table-responsive">
                                     <table className="table table-striped">
-                                        <thead>
+                                        <thead >
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Reserva</th>
