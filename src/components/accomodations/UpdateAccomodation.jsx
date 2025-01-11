@@ -52,9 +52,10 @@ export default function UpdateAccomodation() {
    <div>
     {
       isAuthenticated ?  (
-     <>
-        <div className="container mt-4">
-          <h2 className="text-center mb-4">Actualizar Información</h2>
+     <> 
+        <h2 className="text-center mb-4 mt-5">Actualizar Información</h2>
+        <div className="container mt-4 w-50" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+         
           <form onSubmit={handleSubmit(updateAlojamiento)} className="row g-3">
             {/* Campo ID (solo lectura) */}
             <div className="col-md-12">
@@ -88,8 +89,8 @@ export default function UpdateAccomodation() {
             </div>
 
             {/* Botón de enviar */}
-            <div className="col-md-12 text-center">
-              <button type="submit" className="btn btn-primary"> Actualizar</button>
+            <div className="col-md-12" style={{ display: 'flex', justifyContent: 'center' }}>
+              <button type="submit" className={`  ${styles.btnActualizar} `}> Actualizar</button>
             </div>
           </form>
         </div>
