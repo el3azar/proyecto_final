@@ -29,7 +29,14 @@ const newBookings = async (data) => {
         });
         return response.data;
     }catch(error){
-        console.error("Error al obtener los alojamientos", error);
+
+        console.error("Error al guardar la reservación", error);
+
+        // Devuelve un objeto de error c
+        return {
+            success: false,
+            message: error.response?.data?.message || "Error inesperado al guardar la reservación.",
+        };
     }
 }
 const cancelBooking = async (id, data) => {

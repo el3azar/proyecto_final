@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { getToken } from '../Login';
 import { cancelBooking } from '../../services/bookingServices'
 import styles from '../../styles/bookings/CancelarBooking.module.css';
+import Swal from 'sweetalert2';
 
 export default function CancelarBooking({showModalCancel, handleCloseModalCancel,selectedBooking}) {
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm({defaultValues: selectedBooking});
@@ -18,17 +19,40 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
       const cancelarReservacion = async (data) => {
         //en vez de usar el data.id se puede usar el selectedBooking.id
          
-          const estado= {
-            status:"CANCELLED"
-          };
-          console.log("estado: ",estado);
+         
+          
           //validamos si el token existe
           const session_token = sessionStorage.getItem('token_bookings');
           if(session_token){//si existe el token, guardamos la reservacion
-            const response = await cancelBooking(data.id,estado);
-            console.log(response);
-            handleCloseModalCancel(); // Cerrar el modal después de guardar la reservación
-            //alerta de confirmacion
+            // Mostrar la alerta de confirmación con SweetAlert2
+            Swal.fire({
+              title: '¿Estás seguro?',
+              text: 'Esta acción no se puede deshacer',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Sí, cancelar',
+              cancelButtonText: 'No, volver',
+            }).then(async (result) => {
+              if (result.isConfirmed) {
+                // Si el usuario confirma la cancelación, procedemos con la llamada API
+                const estado = { status: "CANCELLED" };
+                console.log("estado: ",estado);
+                const response = await cancelBooking(data.id, estado);
+                if (response) {
+                  Swal.fire({
+                    title: 'Reservación cancelada',
+                    icon: 'success',
+                    timer: 3000,  // Tiempo en milisegundos (5000 ms = 5 segundos)
+                    timerProgressBar: true,  // Muestra una barra de progreso
+                    showConfirmButton: false  // No muestra el botón de confirmación
+                  });
+                  
+                  handleCloseModalCancel(); // Cerrar el modal después de cancelar
+                } else {
+                  Swal.fire('Error al cancelar la reservación', 'Inténtalo nuevamente', 'error');
+                }
+              }
+            });
           }
             
       }
@@ -36,8 +60,9 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
   return (
     <div>
     {/* Modal */}
-    <div className={`modal fade ${showModalCancel ? "show" : ""}`} style={{ display: showModalCancel ? "block" : "none" }} tabIndex="-1" role="dialog" >
-      <div className="modal-dialog" role="document">
+    <div className={`modal fade ${showModalCancel ? "show" : ""}`} style={{ display: showModalCancel ? "block" : "none" }} 
+    tabIndex="-1" role="dialog" data-bs-backdrop="true"  onClick={handleCloseModalCancel}>
+      <div className="modal-dialog" role="document" onClick={(e) => e.stopPropagation()}>
         <div className={ ` modal-content ${styles.cont } `}>
           {/* header del modal */}
           <div className="modal-header">
