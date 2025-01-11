@@ -1,4 +1,3 @@
-/*Codigo aqui*/
 /* Estilo personalizado para el botón cancelar */
 .btnActualizar {
     display: flex;
@@ -7,7 +6,8 @@
     text-align: center;
     padding: 8px 20px;        /* Espaciado dentro del botón */
     font-size: 15px;           /* Tamaño del texto */
-    background-color: #99b3e9;               /* Color del texto */
+    background-color: #021334;               
+    color: white;/* Color del texto */
     border: none;              /* Eliminar borde */
     border-radius: 5px;        /* Bordes redondeados */
     display: flex;
@@ -19,6 +19,29 @@
   
   /* Efecto al pasar el mouse por encima */
   .btnActualizar:hover {
-    background-color: #14448d; /* Color más oscuro al pasar el mouse */
-    color: #f5f5f5;
+    background-color: #799acc; /* Color más oscuro al pasar el mouse */
+    color: #000000;
+}
+
+.btnRegresar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8px 20px;        /* Espaciado dentro del botón */
+  font-size: 15px;           /* Tamaño del texto */
+  background-color: #99b3e9;               /* Color del texto */
+  border: none;              /* Eliminar borde */
+  border-radius: 5px;        /* Bordes redondeados */
+  display: flex;
+  cursor: pointer;          /* Muestra un cursor de puntero */
+  transition: background-color 0.3s ease; /* Transición suave para cambio de color */
+  margin-top: 10px;
+ 
+}
+
+/* Efecto al pasar el mouse por encima */
+.btnRegresar:hover {
+  background-color: #14448d; /* Color más oscuro al pasar el mouse */
+  color: #f5f5f5;
 }
