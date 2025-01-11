@@ -86,7 +86,7 @@ const handleEditAlojamiento = (item) => {
                         {
                             loading && (
                                 <div className="text-center mt-4">
-                                    <p className="alert alert-info">Cargando datos...</p>
+                                    <p >Cargando datos...</p>
                                 </div>
                             )
                         }
