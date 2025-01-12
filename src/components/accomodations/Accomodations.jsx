@@ -7,6 +7,7 @@ import NewAccomodation from './NewAccomodation';
 import styles from '../../styles/accomodation/Accomodation.module.css';
 import { useNavigate } from 'react-router-dom';
 import UpdateAccomodation from './UpdateAccomodation';
+import { FaSpinner } from 'react-icons/fa';
 
 export default function Accomodations() {
     const [accomodations, setAccomodations] = useState([])
@@ -94,8 +95,9 @@ const handleCloseModalUpdate = () => {
                         {/** Parte de carga de datos */}
                         {
                             loading && (
-                                <div className="text-center mt-4">
-                                    <p >Cargando datos...</p>
+                               <div className="text-center mt-4">
+                                    <FaSpinner className="spinner" />
+                                    <p>Cargando datos, por favor espera...</p>
                                 </div>
                             )
                         }

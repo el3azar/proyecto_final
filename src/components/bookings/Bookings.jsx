@@ -8,6 +8,7 @@ import NewBooking from './NewBooking';
 import CancelarBooking from './CancelarBooking';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/bookings/Bookings.module.css';
+import { FaSpinner } from 'react-icons/fa';
 
 export default function Bookings() {
     //estado para guardar las reservaciones
@@ -93,7 +94,8 @@ const handleCloseModalCancel = () => {
 
                       {loading && (
                         <div className="text-center mt-4">
-                            <p >Cargando datos...</p>
+                            <FaSpinner className="spinner" />
+                            <p>Cargando datos, por favor espera...</p>
                         </div>
                       )}
                       {

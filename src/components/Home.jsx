@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import Navegacion from './Navegacion';
 import styles from '../styles/Home.module.css';
 import { getAccomodations } from '../services/accomodationServices'
+import { FaSpinner } from 'react-icons/fa';
+
 
 
 export default function Home() {
@@ -59,7 +61,8 @@ export default function Home() {
             
             {loading && (
               <div className="text-center mt-4">
-                <p >Cargando datos...</p>
+                <FaSpinner className="spinner" />
+                <p>Cargando datos, por favor espera...</p>
               </div>
             )}
             
