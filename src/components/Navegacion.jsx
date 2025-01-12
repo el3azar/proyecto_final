@@ -17,10 +17,11 @@ export default function Navegacion() {
       text: "Tu sesión será cerrada y deberás iniciar sesión nuevamente.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#021334",
+      cancelButtonColor: "#032b66",
       confirmButtonText: "Sí, cerrar sesión",
       cancelButtonText: "Cancelar",
+      background:"#d9e5f1",
     }).then((result) => {
       if (result.isConfirmed) {
         logout(); // Llamar al método para cerrar sesión
@@ -30,6 +31,7 @@ export default function Navegacion() {
           icon: "success",
           timer: 1500, // Tiempo en milisegundos
           showConfirmButton: false,
+          background:"#d9e5f1",
         }).then(() => {
           navigate("/"); // Redirigir al login
         });
@@ -61,7 +63,7 @@ export default function Navegacion() {
                   </li>
                 </ul>
                 <form className="d-flex" role="search">
-                  <button className={`btn btn-outline-success  ms-3 ${styles['btn-outline-success']}`} type="button"
+                  <button className={`btn ms-3 ${styles['btn-outline-success']}`} type="button"
                   onClick={cerrar_sesion}> Cerrar Sesión</button>
               
                 </form>
