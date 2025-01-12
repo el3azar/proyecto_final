@@ -43,7 +43,7 @@ export default function UpdateAccomodation({ showModalUpdate, handleCloseModalUp
         }).then(async(result) => {
             if (result.isConfirmed) {
               //recibimos la data de la api
-              const response = await updateAccomodation(data.id, accomodation);
+              const response = await updateAccomodation(data.id, accomodation, session_token);
               console.log(response);  
               Swal.fire({
                 title: "Actualizado!",

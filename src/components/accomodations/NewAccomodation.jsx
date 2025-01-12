@@ -17,7 +17,7 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
         const session_token = sessionStorage.getItem('token_bookings');
         
         if(session_token){//si existe el token, guardamos el alojamiento
-        const response = await newAccomodation(data);
+        const response = await newAccomodation(data,session_token);
         console.log(response);
         
         Swal.fire({

@@ -36,8 +36,9 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
               // Si el usuario confirma la cancelación, procedemos con la llamada API
               const estado = { status: "CANCELLED" };
               console.log("estado: ",estado);
+              console.log("data.id: ",data.id);
               //en vez de usar el data.id se puede usar el selectedBooking.id
-              const response = await cancelBooking(data.id, estado);
+              const response = await cancelBooking(data.id, estado,session_token);
               if (response) {
                 Swal.fire({
                   title: 'Reservación cancelada',

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-//obtenemos el token que se guarda en el sessionstorage
-const token = sessionStorage.getItem('token_bookings')
+
 
  const getAccomodations = async (token) => {
     try{
@@ -17,7 +16,7 @@ const token = sessionStorage.getItem('token_bookings')
         console.error("Error al obtener los alojamientos", error);
     }
 }
- const newAccomodation = async (data) => {
+ const newAccomodation = async (data,token) => {
     try{
 
         const response = await axios.post("https://apibookingsaccomodations-production.up.railway.app/api/V1/accomodation",data, {
@@ -28,11 +27,11 @@ const token = sessionStorage.getItem('token_bookings')
         });
         return response.data;
     }catch(error){
-        console.error("Error al obtener los alojamientos", error);
+        console.error("Error al agregar  alojamientos", error);
     }
 }
 
-const updateAccomodation = async (id, data) => {
+const updateAccomodation = async (id, data,token) => {
     try {
         const response = await axios.put(`https://apibookingsaccomodations-production.up.railway.app/api/V1/accomodation/${id}`, data, {
             headers: {

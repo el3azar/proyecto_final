@@ -18,7 +18,7 @@ const getBookings = async (token) => {
     }
 }
 
-const newBookings = async (data) => {
+const newBookings = async (data,token) => {
     try{
 
         const response = await axios.post("https://apibookingsaccomodations-production.up.railway.app/api/V1/booking",data, {
@@ -39,7 +39,7 @@ const newBookings = async (data) => {
         };
     }
 }
-const cancelBooking = async (id, data) => {
+const cancelBooking = async (id, data,token) => {
     try {
         const response = await axios.patch(`https://apibookingsaccomodations-production.up.railway.app/api/V1/status_booking/${id}`, data, {
             headers: {

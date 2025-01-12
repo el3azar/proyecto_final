@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { getAccomodations } from '../../services/accomodationServices';
 import Swal from 'sweetalert2';
-import { getIdUser,getToken } from '../Login';
+import { getIdUser } from '../Login';
 import { newBookings } from '../../services/bookingServices'
 import styles from '../../styles/bookings/NewBooking.module.css';
 
@@ -34,7 +34,7 @@ export default function NewBooking({ showModal, handleCloseModal}) {
   const guardarReservacion = async (data) => {
       console.log(data);
       const id= await getIdUser();
-      console.log("el id es: ",id); 
+      
       //agregamos el id del usuario al objeto
       const newReservacion = {
         ...data,
@@ -42,9 +42,9 @@ export default function NewBooking({ showModal, handleCloseModal}) {
       };
 
       //validamos si el token existe
-      const session_token = getToken();
+      const session_token = sessionStorage.getItem('token_bookings');
       if(session_token){//si existe el token, guardamos la reservacion
-        const response = await newBookings(newReservacion);
+        const response = await newBookings(newReservacion,session_token);
         console.log(response.message);
         // Validar si ocurrió un error
         if (!response.success) {
