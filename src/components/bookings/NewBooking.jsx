@@ -53,7 +53,13 @@ export default function NewBooking({ showModal, handleCloseModal}) {
               title: "Éxito",
               text: "Reservación guardada exitosamente.",
               icon: "success",
+              timer: 3000,  // Tiempo en milisegundos (3000 ms = 3 segundos)
+              timerProgressBar: true,  // Muestra una barra de progreso
+              showConfirmButton: false, // No muestra el botón de confirmación
               confirmButtonText: "Ok",
+              confirmButtonColor: "#021334",
+              background: "#d9e5f1", // Fondo claro
+              color: "#333333", // Color del texto
           });
           handleCloseModal();
           reset();

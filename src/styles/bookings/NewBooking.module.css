@@ -51,6 +51,7 @@
     /* Efecto al pasar el mouse por encima */
     .btnCancelarB:hover {
       background-color: #14448d; /* Color más oscuro al pasar el mouse */
+      background-color: #032b66; /* Color más oscuro al pasar el mouse */
       color: #f5f5f5;
   }
 
