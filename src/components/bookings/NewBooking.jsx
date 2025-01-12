@@ -85,7 +85,7 @@ export default function NewBooking({ showModal, handleCloseModal}) {
       {/* Modal */}
       <main  className={`modal fade ${showModal ? "show" : ""} data-bs-backdrop="true" `} style={{ display: showModal ? "block" : "none" }} 
       tabIndex="-1" role="dialog" data-bs-backdrop="true"  onClick={handleCloseModal}  >
-        <div className="modal-dialog" role="document" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-dialog modal-dialog-centered" role="document" onClick={(e) => e.stopPropagation()}>
           <section className={ ` modal-content ${styles.cont } `}>
             {/* header del modal */}
             <section className="modal-header">
@@ -95,7 +95,7 @@ export default function NewBooking({ showModal, handleCloseModal}) {
             {/* cuerpo del modal */}
             <section className="modal-body">
               {/* Formulario */}
-              <form onSubmit={handleSubmit(guardarReservacion)}>
+              <form onSubmit={handleSubmit(guardarReservacion)} className="row g-3 w-100">
                 {/* Combobox con alojamientos */}
                 <article className="form-group">
                   <label htmlFor="opciones" className="text-start">Alojamiento</label>

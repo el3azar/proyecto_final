@@ -65,16 +65,16 @@ export default function UpdateAccomodation({ showModalUpdate, handleCloseModalUp
     
          <main className={`modal fade ${showModalUpdate ? "show" : ""}`} style={{ display: showModalUpdate ? "block" : "none" }} 
             tabIndex="-1" role="dialog" data-bs-backdrop="true"  onClick={handleCloseModalUpdate}>
-            <div className="modal-dialog" role="document" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-dialog modal-dialog-centered " role="document" onClick={(e) => e.stopPropagation()}>
 
-              <div className={ ` modal-content ${styles.cont } `}>
+              <div className={ `modal-content ${styles.cont } `}>
                
                   <h2 className="text-center mb-4 mt-3">Actualizar Información</h2>
                
             
-                <section className="modal-body container " style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <section className="modal-body container " style={{display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center'}}>
                     
-                      <form onSubmit={handleSubmit(updateAlojamiento)} className="row g-3">
+                      <form onSubmit={handleSubmit(updateAlojamiento)} className="row g-3 w-100">
                         {/* Campo ID (solo lectura) */}
                         <article  className="col-md-12">
                           <label htmlFor="id" className="form-label">ID</label>

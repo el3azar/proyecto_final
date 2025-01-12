@@ -41,14 +41,14 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
         {/* Modal */}
             <main className={`modal fade ${showModal ? 'show' : ''}`  } style={{ display: showModal ? 'block' : 'none' }} 
             tabIndex="-1" role="dialog" data-bs-backdrop="true"  onClick={handleCloseModal}>
-                 <section className="modal-dialog " role="document" onClick={(e) => e.stopPropagation()}>
+                 <section className="modal-dialog modal-dialog-centered" role="document" onClick={(e) => e.stopPropagation()}>
                     <div className={ ` modal-content ${styles.cont } `} >           
                        <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel"  style={{ textAlign: 'center', width: '100%' }} >Nuevo Alojamiento</h5>
                             
                         </div>
                         <div className="modal-body">
-                           <form onSubmit={handleSubmit(guardarAlojamiento)}>
+                           <form onSubmit={handleSubmit(guardarAlojamiento)} className="row g-3 w-100">
                                <article className="form-group">
                                     <label htmlFor="name_alojamiento" className="col-form-label">Nombre*</label>
                                     <input type="text" className={`form-control ${errors.name ? "is-invalid" : ""}`} 

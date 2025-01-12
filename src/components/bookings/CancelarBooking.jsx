@@ -51,7 +51,15 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
                 }); 
                 handleCloseModalCancel(); // Cerrar el modal después de cancelar
               }else {
-                Swal.fire('Error al cancelar la reservación', 'Inténtalo nuevamente', 'error');
+                Swal.fire({
+                  title: 'Error al cancelar la reservación Inténtalo nuevamente',
+                  icon: 'error',
+                  timer: 3000,  // Tiempo en milisegundos (3000 ms = 3 segundos)
+                  timerProgressBar: true,  // Muestra una barra de progreso
+                  showConfirmButton: false, // No muestra el botón de confirmación
+                  background: "#d9e5f1", // Fondo claro
+                  color: "#333333", // Color del texto
+                });
               }
             }
         });
@@ -64,7 +72,7 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
     {/* Modal */}
     <main className={`modal fade ${showModalCancel ? "show" : ""}`} style={{ display: showModalCancel ? "block" : "none" }} 
     tabIndex="-1" role="dialog" data-bs-backdrop="true"  onClick={handleCloseModalCancel}>
-      <div className="modal-dialog" role="document" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-dialog modal-dialog-centered" role="document" onClick={(e) => e.stopPropagation()}>
         <section className={ ` modal-content ${styles.cont } `}>
           {/* header del modal */}
           <section className="modal-header">
@@ -73,7 +81,7 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
           {/* cuerpo del modal */}
           <section className="modal-body">
             {/* Formulario */}
-            <form onSubmit={handleSubmit(cancelarReservacion)}>
+            <form onSubmit={handleSubmit(cancelarReservacion)} className="row g-3 w-100">
               {/* Combobox con alojamientos */}
               <article className="form-group">
                   <label htmlFor="alojamiento" className="text-start">Alojamiento</label>
