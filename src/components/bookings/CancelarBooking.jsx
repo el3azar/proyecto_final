@@ -25,8 +25,12 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
               text: 'Esta acción no se puede deshacer',
               icon: 'warning',
               showCancelButton: true,
+              confirmButtonColor: "#021334",
+              cancelButtonColor: "#032b66", 
               confirmButtonText: 'Sí, cancelar',
               cancelButtonText: 'No, volver',
+              background: "#d9e5f1", // Fondo claro
+              color: "#333333", // Color del texto
         }).then(async (result) => {
           if (result.isConfirmed) {
               // Si el usuario confirma la cancelación, procedemos con la llamada API
@@ -40,7 +44,9 @@ export default function CancelarBooking({showModalCancel, handleCloseModalCancel
                   icon: 'success',
                   timer: 3000,  // Tiempo en milisegundos (3000 ms = 3 segundos)
                   timerProgressBar: true,  // Muestra una barra de progreso
-                  showConfirmButton: false  // No muestra el botón de confirmación
+                  showConfirmButton: false, // No muestra el botón de confirmación
+                  background: "#d9e5f1", // Fondo claro
+                  color: "#333333", // Color del texto
                 }); 
                 handleCloseModalCancel(); // Cerrar el modal después de cancelar
               }else {

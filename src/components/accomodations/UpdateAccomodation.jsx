@@ -28,12 +28,18 @@ export default function UpdateAccomodation({ showModalUpdate, handleCloseModalUp
        const session_token = sessionStorage.getItem('token_bookings');  
       if(session_token){//si existe el token, guardamos el alojamiento
         Swal.fire({
-            title: "¿Estas seguro?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes!"
+          title: "¿Estás seguro?",
+          text: "Esta acción actualizará el alojamiento.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#021334",
+          cancelButtonColor: "#032b66", 
+          confirmButtonText: "Sí, actualizar",
+          cancelButtonText: "Cancelar",
+          background: "#d9e5f1", // Fondo claro
+          color: "#333333", // Color del texto
+          
+          
         }).then(async(result) => {
             if (result.isConfirmed) {
               //recibimos la data de la api
@@ -44,7 +50,9 @@ export default function UpdateAccomodation({ showModalUpdate, handleCloseModalUp
                 text: "El alojamiento ha sido actualizado.",
                 icon: "success",
                 timer: 3000,
-                showConfirmButton: false  // No muestra el botón de confirmación
+                showConfirmButton: false,  // No muestra el botón de confirmación
+                background: "#d9e5f1", // Fondo claro
+                color: "#333333", // Color del texto
               });
               handleCloseModalUpdate(); // Cerrar el modal después de cancelar
             }
@@ -60,11 +68,11 @@ export default function UpdateAccomodation({ showModalUpdate, handleCloseModalUp
             <div className="modal-dialog" role="document" onClick={(e) => e.stopPropagation()}>
 
               <div className={ ` modal-content ${styles.cont } `}>
-                <section className="modal-header">
-                  <h2 className="text-center mb-4 mt-5">Actualizar Información</h2>
-                </section>
+               
+                  <h2 className="text-center mb-4 mt-3">Actualizar Información</h2>
+               
             
-                <section className="modal-body container mt-4 w-50" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <section className="modal-body container " style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     
                       <form onSubmit={handleSubmit(updateAlojamiento)} className="row g-3">
                         {/* Campo ID (solo lectura) */}

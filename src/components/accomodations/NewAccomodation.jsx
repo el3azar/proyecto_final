@@ -25,7 +25,8 @@ export default function NewAccomodation({ showModal, handleCloseModal }) {
             icon: "success",
             draggable: true,
             timer: 3000,
-            showConfirmButton: false 
+            showConfirmButton: false ,
+            background: "#d9e5f1"
         });
         handleCloseModal(); // Cerrar el modal después de guardar la reservación
         reset(); // Resetear el formulario después de guardar
