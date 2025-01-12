@@ -90,8 +90,10 @@ Ejecutar el proyecto
 
 5.	Ejecuta el proyecto en tu máquina local:
 
-        	npm run dev
-6.	Ahora puedes acceder al proyecto en tu navegador. desde 
+        npm run dev
+6.	Ahora puedes acceder al proyecto en tu navegador desde
+
+>>>
         http://localhost:#### 
 
 Uso
