@@ -95,10 +95,10 @@ const handleCloseModalUpdate = () => {
                         {/** Parte de carga de datos */}
                         {
                             loading && (
-                               <div className="text-center mt-4">
-                                    <FaSpinner className="spinner" />
-                                    <p>Cargando datos, por favor espera...</p>
-                                </div>
+                              <div className="text-center mt-4">
+                                <p>Cargando datos, por favor espera...</p>
+                                <FaSpinner className="spinner" />
+                              </div>
                             )
                         }
                         {!loading && (

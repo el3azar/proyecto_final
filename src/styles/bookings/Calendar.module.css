@@ -18,3 +18,122 @@
     background-color: #14448d; /* Color más oscuro al pasar el mouse */
     color: #f5f5f5;
 }
+
+
+/* Contenedor de los eventos */
+.eventContainer {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%;
+  white-space: nowrap; /* Evita que el texto se quiebre en líneas nuevas */
+  overflow-x: hidden; /* Sin scroll horizontal por defecto */
+}
+
+/* Título del evento */
+.eventTitle {
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* Detalles del evento */
+.parrafo {
+  margin: 4px 0;
+  color: #555;
+  font-size: 0.7rem;
+  line-height: 1.2; /* Mejora el espaciado entre líneas */
+}
+
+/* Colores según el estado del evento */
+.confirmed {
+  background-color: #d4edda; /* Verde claro */
+}
+
+.cancelled {
+  background-color: #f8d7da; /* Rojo claro */
+}
+
+.default {
+  background-color: white;
+}
+
+
+@media (max-width: 768px) {
+  .eventContainer {
+    font-size: 0.75rem; 
+    height: 50px; 
+    overflow-x: auto; /* Habilita scroll horizontal */
+    scrollbar-width: thin; /* Scroll delgado por defecto */
+  }
+
+
+  .eventContainer::-webkit-scrollbar {
+    height: 12px; /* Aumenta la altura del scroll horizontal */
+  }
+
+  .eventContainer::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color del scroll */
+    border-radius: 8px; /* Bordes redondeados */
+  }
+
+  .eventContainer::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color del scroll al pasar el cursor */
+  }
+
+  .eventContainer::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Fondo del track del scroll */
+    border-radius: 8px;
+  }
+
+  .eventTitle {
+    font-size: 0.6rem; 
+    margin-right: 15px;
+  }
+
+  .parrafo {
+    font-size: 0.6rem;
+    display: inline-block; 
+    margin-right: 15px; 
+    white-space: nowrap; 
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  .eventContainer {
+    overflow-x: auto;
+    scrollbar-width: thin; 
+    white-space: nowrap;
+  }
+
+  .eventContainer::-webkit-scrollbar {
+    height: 10px; /* Ajusta el tamaño del scroll horizontal */
+  }
+
+  .eventContainer::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 8px; 
+  }
+
+  .eventContainer::-webkit-scrollbar-thumb:hover {
+    background-color: #555; 
+  }
+
+  .eventContainer::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+    border-radius: 8px;
+  }
+
+  .eventTitle {
+    font-size: 0.8rem; 
+    margin-right: 10px;
+  }
+
+  .parrafo {
+    font-size: 0.7rem; 
+    margin-right: 10px;
+  }
+}

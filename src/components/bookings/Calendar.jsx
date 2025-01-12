@@ -5,12 +5,15 @@ import { getToken } from '../Login';
 import { getBookingsByAccomodation } from '../../services/bookingServices';
 import FullCalendar from '@fullcalendar/react'; // Importar FullCalendar
 import dayGridPlugin from '@fullcalendar/daygrid'; // Plugin para vista de cuadrícula (mes/día)
+import timeGridPlugin from '@fullcalendar/timegrid';
 import Navegacion from '../Navegacion';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/bookings/Calendar.module.css';
+import esLocale from '@fullcalendar/core/locales/es';
+
 
 export default function () {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,setValue } = useForm();
   const [accomodations, setAccomodations] = useState([]); // Estado para alojamientos
   const [bookings, setBookings] = useState([]); // Estado para reservaciones
   //estado para verificar si el usuario esta autenticado
@@ -21,6 +24,9 @@ export default function () {
   const fetchData = async (session_token) => {
     const response = await getAccomodations(session_token);
     setAccomodations(response);
+    if (response.length > 0) {
+      setValue("accomodation_id", response[0].id);
+    }
   };
 
   // Método existente: filtrar reservaciones por alojamiento
@@ -42,7 +48,7 @@ export default function () {
   const events = bookings.map((item) => ({
     title: item.booking, // Mostrar el código de la reservación
     start: item.created_at, // Fecha de creación (por día, mes, año)
-    color: item.status === 'CONFIRMED' ? 'green' : 'red', // Colores según el estado
+    
     extendedProps: { // Información adicional que se puede acceder en `eventContent`
         status: item.status, // Estado de la reservación
         total_amount: item.total_amount, // Monto total
@@ -92,44 +98,32 @@ export default function () {
             <section className="mt-5 container">
               
               {/* Nuevo: Renderizar FullCalendar */}
-              <FullCalendar
-                  plugins={[dayGridPlugin]}
-                  initialView="dayGridMonth"
-                  events={events}
-                  locale="es"
+              <FullCalendar plugins={[dayGridPlugin,timeGridPlugin]} initialView="dayGridMonth" events={events} locale={esLocale}
                   headerToolbar={{
                       left: 'prev,next today',
                       center: 'title',
                       right: 'dayGridMonth,dayGridWeek',
                   }}
                   height="auto"
+                  aspectRatio={1.5}
                   eventContent={(eventInfo) => {
-                      return (
-                      <div style={{
-                          backgroundColor: 
-            eventInfo.event.extendedProps.status === 'CONFIRMED'
-              ? '#d4edda' // Verde claro para confirmados
-              : eventInfo.event.extendedProps.status === 'CANCELLED'
-              ? '#f8d7da' // Rojo claro para cancelados
-              : 'white',
-                          border: '1px solid #ddd', // Borde gris claro
-                          borderRadius: '8px', // Bordes redondeados
-                          padding: '8px', // Espaciado interno
-                          fontSize: '0.9rem', // Tamaño de fuente
-                          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Sombra
-                          textAlign: 'left', // Alineación del texto
-                          width: '100%', // Ancho del contenedor
-                          }} >
-                              
-                          <strong style={{ color: 'black', fontSize: '1rem' }}>{eventInfo.event.title}</strong>
-                          <p style={{ margin: '4px 0', color: '#555', fontSize: '0.7rem' }}>
-                          Fecha de creación: {new Date(eventInfo.event.start).toLocaleDateString('es-ES')}
-                          </p>
-                          <p style={{ margin: '4px 0', color: '#555', fontSize: '0.8rem' }}>
-                              Estado: {eventInfo.event.extendedProps.status} </p>
-                          <p style={{ margin: '4px 0', color: '#555', fontSize: '0.8rem' }}>
-                          Total: ${eventInfo.event.extendedProps.total_amount}</p>
+                    const statusClass =
+                      eventInfo.event.extendedProps.status === 'CONFIRMED' ? styles.confirmed
+                        : eventInfo.event.extendedProps.status === 'CANCELLED' ? styles.cancelled
+                        : styles.default;
 
+                      return (
+                        <div className={`${styles.eventContainer} ${statusClass}`}>
+                          <strong className={styles.eventTitle}>{eventInfo.event.title}</strong>
+                          <p className={styles.parrafo}>
+                            check in: {new Date(eventInfo.event.start).toLocaleDateString('es-ES')}
+                          </p>
+                          <p className={styles.parrafo}>
+                            Estado: {eventInfo.event.extendedProps.status}
+                          </p>
+                          <p className={styles.parrafo}>
+                            Total: ${eventInfo.event.extendedProps.total_amount}
+                          </p>
                       </div>
                       );
                   }}
