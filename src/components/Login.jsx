@@ -52,7 +52,7 @@ export default function Login() {
                         <article>
                             <p><FaInfoCircle className="me-2" /> Ingresa tus credenciales para acceder al sistema </p>
                         </article>
-                        <article className={`${styles.alineado} mb-3`}>
+                        <article className= "mb-3">
                             <label htmlFor="email">Correo</label>
                             <input  type="email"  {...register('email', { 
                             required: "El correo es obligatorio", 
@@ -61,7 +61,7 @@ export default function Login() {
                             })}  className={`w-100 ${errors.email ? styles.inputError : ''}`}  />
                             {errors.email && <p className={styles.errorMessage}>{errors.email.message}</p>}
                         </article>
-                        <article className={`${styles.alineado} mb-3`}>
+                        <article className="mb-3">
                             <label htmlFor="password">Contraseña</label>
                             <input type="password"  {...register('password', { required: "La contraseña es obligatoria"})} 
                             className={`w-100 ${errors.password ? styles.inputError : ''}`} />
