@@ -1,4 +1,3 @@
-
 # StayDeligh - Alojamientos y Reservaciones
 
 Este proyecto permite a los administradores gestionar alojamientos y reservaciones. Se utiliza una API privada de alojamientos para gestionar la información de los mismos y proporcionar interacciones con la funcionalidad de reservas. Los administradores pueden ver, actualizar y cancelar reservas, además de visualizar todas las reservas en un calendario.
